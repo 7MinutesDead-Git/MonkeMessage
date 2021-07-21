@@ -1,0 +1,22 @@
+<h1>All Articles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <!-- Each article is going to make a new table row, and include each data (td). -->
+  <% @articles.each do |article| %>
+  <tr>
+    <td><%= article.title %>></td>
+    <td><%= article.description %></td>
+    <td>Placeholder Actions</td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>

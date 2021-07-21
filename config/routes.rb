@@ -7,7 +7,7 @@
 #     a name could be "pages_controller".
 #
 # - Have an appropriately named action. For example:
-#   - If dealing with a homepage, the action/method
+#   - If dealing with a home page, the action/method
 #     could be named "home".
 #
 # - If done this way, under "views", rails will expect:
@@ -15,7 +15,11 @@
 #   - A "home.html.erb" template (named for home action).
 
 Rails.application.routes.draw do
+  # The default page to load.
   root('pages#home')
+  # Load about page when requesting /about.
   get('about', to:'pages#about')
-  resources(:articles, only: [:show])
+  # Article resources.
+  # "only:" means only generate routes for the given actions.
+  resources(:articles, only: [:show, :index])
 end
