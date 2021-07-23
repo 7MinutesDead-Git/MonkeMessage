@@ -1,3 +1,5 @@
+// Bootstrap v5 requires poppers.js Core, not just poppers.js.
+// Easiest method is "yarn add @popperjs/core".
 const { environment } = require('@rails/webpacker')
 
 const webpack = require("webpack")

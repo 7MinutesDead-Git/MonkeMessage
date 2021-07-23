@@ -17,9 +17,10 @@
         bottom: 0;
         min-width: 100%;
         min-height: 100%;
-        z-index: 0;
+        z-index: -2;
       }
       .wrapper {
+        z-index: -2;
         position: absolute;
         width: 100%;
       }
@@ -30,10 +31,10 @@
         min-height: 600px;
         object-fit: cover;
         position: relative;
-        z-index: 1;
+        z-index: -1;
       }
       .navbar {
-        z-index: 2;
+        z-index: 0;
       }
       .footer {
           position: fixed;
@@ -44,7 +45,10 @@
           height: auto;
           color: white;
           text-align: left;
-          z-index: 2;
+          z-index: 0;
+      }
+      .ruby_yields {
+          z-index: 1;
       }
     </style>
   </head>
@@ -127,8 +131,10 @@
     </script>
 
     <!-- Render _messages partial here. -->
-    <%= render 'layouts/messages' %>
-    <!-- All our views are served through the yield line. -->
-    <%= yield %>
+    <div class="ruby_yields">
+      <%= render 'layouts/messages' %>
+      <!-- All our views are served through the yield line. -->
+      <%= yield %>
+    </div>
   </body>
 </html>
