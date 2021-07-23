@@ -54,6 +54,20 @@
       </div>
     </nav>
 
+    <!-- Dropdown animation -->
+    <script>
+      var dropdown = $('.dropdown');
+      // Add slideDown animation to Bootstrap dropdown when expanding.
+      dropdown.on('show.bs.dropdown', function() {
+          $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+      });
+
+      // Add slideUp animation to Bootstrap dropdown when collapsing.
+      dropdown.on('hide.bs.dropdown', function() {
+          $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+      });
+    </script>
+
     <!-- Render _messages partial here. -->
     <%= render 'layouts/messages' %>
     <!-- All our views are served through the yield line. -->
