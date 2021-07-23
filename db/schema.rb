@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2021_07_21_174222) do
 
-  create_table("articles", force: :cascade) do |t|
-    t.string("title")
-    t.text("description")
-    t.datetime("created_at", precision: 6, null: false)
-    t.datetime("updated_at", precision: 6, null: false)
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "description"
   end
 
 end
