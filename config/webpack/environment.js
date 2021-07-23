@@ -6,7 +6,7 @@ const webpack = require("webpack")
 var plugin_list = {
     $: 'jquery',
     jQuery: 'jquery',
-    Popper: ['popper.js', 'default']
+    Popper: ['popper.js', 'Core']
 }
 
 var webpack_plugins = new webpack.ProvidePlugin(plugin_list)
