@@ -2,36 +2,6 @@
 
 <h1>Create new article.</h1>
 
-<!-- Display error messages if previously submitted new article failed. -->
-<!-- @article variable is part of ArticlesController class, made during create method. -->
-<% if @new_article.errors.any? %>
-  <h2>Unable to save article (make sure the following errors are fixed first then try again).</h2>
+<%= render('articles/form') %>
 
-  <ul> <% @new_article.errors.full_messages.each do |error_message| %>
-    <li>
-      <%= error_message %>
-    </li>
-  <% end %> </ul>
-
-<% end %>
-
-<!-- Setting local to true means using standard http post instead of ajax. -->
-<%= form_with(scope: :article, url: articles_path, local: true) do |f| %>
-
-  <p>
-    <!-- Text input here will be saved as article title. -->
-    <%= f.label :title %><br/>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <!-- Text input here will be saved as article description. -->
-    <%= f.label :description %><br/>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <!-- Button to submit new article to db. -->
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= link_to('Discard Changes', articles_path, method: :get) %>
