@@ -15,7 +15,11 @@
   <tr>
     <td><%= article.title %></td>
     <td><%= article.description %></td>
-    <td>Placeholder Actions</td>
+    <td><%= link_to('Show', article_path(article.id), method: :get) %></td>
+    <td><%= link_to('Edit', edit_article_path(article.id), method: :get) %></td>
+    <!-- Link name is "Delete", links to article.id path, and sends DELETE verb. -->
+    <!-- DELETE request will access our "destroy" method in Article class. -->
+    <td><%= link_to('Delete', article_path(article.id), method: :delete) %></td>
   </tr>
   <% end %>
   </tbody>
