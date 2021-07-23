@@ -57,7 +57,7 @@ class ArticlesController < ApplicationController
   def update
     @article = find_article_by_id
     # Update the article's given params (title and description).
-    if @article.update(get_permitted_params)
+    if @article.update(permitted_params)
       flash[:notice] = 'Article updated.'
       redirect_to(@article)
     else
@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
   # Create a new article and add it to the database.
   def create
     # A new Article object with the permitted title and description params.
-    @article = Article.new(get_permitted_params)
+    @article = Article.new(permitted_params)
 
     # Save new article to db. See notes at top.
     if @article.save
@@ -102,7 +102,7 @@ class ArticlesController < ApplicationController
   # and only allow title and description to come through.
   # This is an added security feature to prevent unwanted form submissions.
   # Gets permitted title and description parameters and returns the Parameters object.
-  def get_permitted_params
+  def permitted_params
     params.require(:article).permit(:title, :description)
   end
 
