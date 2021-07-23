@@ -26,23 +26,6 @@
 # Controller for our Article actions.
 class ArticlesController < ApplicationController
   # ----------------
-  # Strong Parameters!
-  # https://api.rubyonrails.org/classes/ActionController/StrongParameters.html
-  # For params coming from a request, require the top level key of "article",
-  # and only allow title and description to come through.
-  # This is an added security feature to prevent unwanted form submissions.
-  # Gets permitted title and description parameters and returns the Parameters object.
-  def get_permitted_params
-    params.require(:article).permit(:title, :description)
-  end
-
-  # ----------------
-  # Find Article with given :id from RESTful request. Return Article object.
-  def find_article_by_id
-    Article.find(params[:id])
-  end
-
-  # ----------------
   # Returns matching Article with the requested :id.
   def show
     @article = find_article_by_id
@@ -59,7 +42,7 @@ class ArticlesController < ApplicationController
     # @new_article needs to be initialized here so that the
     # errors parameter exists on first load of new.html.erb.
     # This is because we won't have errors until we first try to submit a faulty article.
-    @new_article = Article.new
+    @article = Article.new
   end
 
   # ----------------
@@ -87,13 +70,13 @@ class ArticlesController < ApplicationController
   # Create a new article and add it to the database.
   def create
     # A new Article object with the permitted title and description params.
-    @new_article = Article.new(get_permitted_params)
+    @article = Article.new(get_permitted_params)
 
     # Save new article to db. See notes at top.
-    if @new_article.save
+    if @article.save
       flash[:notice] = 'Article created.'
       # Open a page showing the new article (redirects to :location param I think).
-      redirect_to(@new_article)
+      redirect_to(@article)
     else
       # If it fails, render "new" template again.
       flash[:alert] = 'Article did not save.'
@@ -108,6 +91,25 @@ class ArticlesController < ApplicationController
     @article = find_article_by_id
     @article.destroy
     redirect_to(articles_path)
+  end
+
+  # ----------------
+  private
+  # ----------------
+  # Strong Parameters!
+  # https://api.rubyonrails.org/classes/ActionController/StrongParameters.html
+  # For params coming from a request, require the top level key of "article",
+  # and only allow title and description to come through.
+  # This is an added security feature to prevent unwanted form submissions.
+  # Gets permitted title and description parameters and returns the Parameters object.
+  def get_permitted_params
+    params.require(:article).permit(:title, :description)
+  end
+
+  # ----------------
+  # Find Article with given :id from RESTful request. Return Article object.
+  def find_article_by_id
+    Article.find(params[:id])
   end
 
 end
