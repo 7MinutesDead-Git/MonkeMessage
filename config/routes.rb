@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   get('about', to:'pages#about')
   # Article resources.
   # "only:" means only generate routes for the given actions.
-  resources(:articles, only: [:show, :index, :new, :create])
+  resources(:articles, only: [:show, :index, :new, :create, :edit, :update, :destroy])
 end
