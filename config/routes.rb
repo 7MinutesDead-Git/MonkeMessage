@@ -1,4 +1,5 @@
-# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+# https://guides.rubyonrails.org/routing.html
+#
 # Conventional expectations:
 # - Define a route that points to a controller#action.
 #
@@ -21,5 +22,6 @@ Rails.application.routes.draw do
   get('about', to:'pages#about')
   # Article resources.
   # "only:" means only generate routes for the given actions.
+  # https://guides.rubyonrails.org/routing.html#crud-verbs-and-actions
   resources(:articles, only: [:show, :index, :new, :create, :edit, :update, :destroy])
 end
