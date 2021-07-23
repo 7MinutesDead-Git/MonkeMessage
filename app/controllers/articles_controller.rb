@@ -27,18 +27,25 @@
 class ArticlesController < ApplicationController
   # ----------------
   # Strong Parameters!
+  # https://api.rubyonrails.org/classes/ActionController/StrongParameters.html
   # For params coming from a request, require the top level key of "article",
   # and only allow title and description to come through.
   # This is an added security feature to prevent unwanted form submissions.
   # Gets permitted title and description parameters and returns the Parameters object.
-  def get_params
+  def get_permitted_params
     params.require(:article).permit(:title, :description)
+  end
+
+  # ----------------
+  # Find Article with given :id from RESTful request. Return Article object.
+  def find_article_by_id
+    Article.find(params[:id])
   end
 
   # ----------------
   # Returns matching Article with the requested :id.
   def show
-    @article = Article.find(params[:id])
+    @article = find_article_by_id
   end
 
   # ----------------
@@ -56,17 +63,18 @@ class ArticlesController < ApplicationController
   end
 
   # ----------------
+  # # Find requested article to edit so we can use it in edit.erb page.
+  # # We'll run "update" method from that page after submitting edits.
   def edit
-    # Find requested article to edit so we can use it in edit.erb page.
-    @article = Article.find(params[:id])
+    @article = find_article_by_id
   end
 
   # ----------------
   # Update existing article with submitted changes via edit.html.erb.
   def update
-    @article = Article.find(params[:id])
+    @article = find_article_by_id
     # Update the article's given params (title and description).
-    if @article.update(get_params)
+    if @article.update(get_permitted_params)
       flash[:notice] = 'Article updated.'
       redirect_to(@article)
     else
@@ -79,7 +87,7 @@ class ArticlesController < ApplicationController
   # Create a new article and add it to the database.
   def create
     # A new Article object with the permitted title and description params.
-    @new_article = Article.new(get_params)
+    @new_article = Article.new(get_permitted_params)
 
     # Save new article to db. See notes at top.
     if @new_article.save
@@ -91,11 +99,15 @@ class ArticlesController < ApplicationController
       flash[:alert] = 'Article did not save.'
       render('new')
     end
+
   end
 
   # ----------------
+  # Delete specified article and return to article index page.
   def destroy
-    # ...
+    @article = find_article_by_id
+    @article.destroy
+    redirect_to(articles_path)
   end
 
 end
