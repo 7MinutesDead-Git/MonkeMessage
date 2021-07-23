@@ -33,7 +33,6 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Use sqlite3 as the database for Active Record (Heroku recommends against this, opting instead for pg).
   # gem 'sqlite3', '~> 1.4'
-  gem 'pg'
 end
 
 group :development do
