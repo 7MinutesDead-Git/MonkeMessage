@@ -1,11 +1,15 @@
 <h1>All Articles</h1>
 
+<p>
+  <%= link_to('Create New Article', new_article_path, method: :get) %>
+
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Actions</th>
+      <!-- Actions header should span 3 to cover Show, Edit and Delete links. -->
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -22,5 +26,10 @@
     <td><%= link_to('Delete', article_path(article.id), method: :delete) %></td>
   </tr>
   <% end %>
+
   </tbody>
+
 </table>
+
+<p>
+<%= link_to('Create New Article', new_article_path, method: :get) %>
