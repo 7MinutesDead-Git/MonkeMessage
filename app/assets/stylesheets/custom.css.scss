@@ -14,7 +14,8 @@ $corner_radius: 30px;
 // Navigation Bar.
 .navbar {
   background-color: $bg_color !important;
-  z-index: 0;
+  // High index so dropdown menus aren't covered up.
+  z-index: 10;
 }
 .dropdown-menu {
   background-color: $bg_color + 5;
