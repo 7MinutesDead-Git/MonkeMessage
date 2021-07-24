@@ -23,7 +23,6 @@ $corner_radius: 30px;
   color: $bg_color + 100;
 }
 .btn-outline-success {
-  //outline-color: $bg_color - 100;
   border-color: $bg_color + 20;
 }
 .btn {
@@ -31,6 +30,11 @@ $corner_radius: 30px;
 }
 .dropdown-divider {
   color: $bg_color + 100;
+}
+#navbar_search_form {
+  background-color: $bg_color + 20;
+  caret-color: $bg_color + 100;
+  border-color: $bg_color + 50;
 }
 
 // -----------------------------------------
