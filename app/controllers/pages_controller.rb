@@ -5,4 +5,10 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def monke_gallery
+  end
+
+  def monke_replies
+  end
 end

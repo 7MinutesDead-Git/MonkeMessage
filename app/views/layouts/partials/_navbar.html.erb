@@ -1,7 +1,9 @@
 <!-- Navigation Bar. -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Monke Message</a>
+
+    <%= link_to("Monke Message", root_path, class: "navbar-brand", id: "logo") %>
+
     <!-- Dynamically collapsable into single button when width is small (mobile for example). -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,8 +15,8 @@
             Messages
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">My Messages</a></li>
-            <li><a class="dropdown-item" href="#">Message Community</a></li>
+            <li><%= link_to("My Messages", articles_path, class: 'dropdown-item') %></li>
+            <li><%= link_to("Make New Message", new_article_path, class: 'dropdown-item') %></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -22,10 +24,10 @@
             Monke
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Replies From Monke</a></li>
-            <li><a class="dropdown-item" href="#">Show Me Monke</a></li>
+            <li><%= link_to("Replies From Monke", monke_replies_path, class: 'dropdown-item') %></li>
+            <li><%= link_to("Show Me Monke", monke_gallery_path, class: 'dropdown-item') %></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Monke: What Gives?</a></li>
+            <li><%= link_to("Monke: What Gives?", monke_info_path, class: 'dropdown-item') %></li>
           </ul>
         </li>
         <li>
