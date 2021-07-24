@@ -7,10 +7,11 @@
 // Variables.
 // #ffb300 awesome banana yellow.
 // #23282e Good dark grey-blue.
-$bg_color: #ffb300;
+$bg_color: #23282e;
+$corner_radius: 30px;
 
 // -----------------------------------------
-// Style overrides.
+// Navigation Bar.
 .navbar {
   background-color: $bg_color !important;
   z-index: 0;
@@ -19,7 +20,7 @@ $bg_color: #ffb300;
   background-color: $bg_color + 5;
 }
 .dropdown-item {
-  color: $bg_color - 100;
+  color: $bg_color + 100;
 }
 .btn-outline-success {
   //outline-color: $bg_color - 100;
@@ -28,16 +29,22 @@ $bg_color: #ffb300;
 .btn {
   background-color: $bg_color + 10;
 }
+.dropdown-divider {
+  color: $bg_color + 100;
+}
+
+// -----------------------------------------
+// Background video.
 #MonkeLoop {
   position: fixed;
   right: 0;
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  z-index: -2;
+  z-index: -3;
 }
 .wrapper {
-  z-index: -2;
+  z-index: -3;
   position: absolute;
   width: 100%;
 }
@@ -48,8 +55,41 @@ $bg_color: #ffb300;
   min-height: 600px;
   object-fit: cover;
   position: relative;
-  z-index: -1;
+  z-index: -2;
 }
+
+// -----------------------------------------
+// Home page jumbo.
+#home_container {
+  margin-top: 50px;
+}
+
+.jumbotron {
+  border-radius: $corner_radius;
+  background-image: asset_url('monke_splash.jpg');
+  opacity: 90%;
+  background-position: center center;
+  background-size: cover;
+  height: 500px;
+  z-index: 0;
+}
+.gradient_home {
+  background-image: linear-gradient(180deg, rgba($bg_color, 0.6) 5%, rgba($bg_color, 0.1));
+  width: 100%;
+  height: 100%;
+  border-radius: $corner_radius;
+  object-fit: cover;
+  position: relative;
+  z-index: 0;
+}
+.center {
+  vertical-align: middle;
+  padding: 100px 0;
+}
+
+
+// -----------------------------------------
+// Footer.
 .footer {
   position: fixed;
   left: 0;
@@ -61,6 +101,9 @@ $bg_color: #ffb300;
   text-align: left;
   z-index: 0;
 }
+
+// -----------------------------------------
+// All ruby page yields.
 .ruby_yields {
   z-index: 1;
 }
