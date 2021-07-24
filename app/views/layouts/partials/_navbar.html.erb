@@ -8,27 +8,30 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">My Messages</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Messages
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">My Messages</a></li>
+            <li><a class="dropdown-item" href="#">Message Community</a></li>
+          </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Monkes
+            Monke
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Replies From Monke</a></li>
             <li><a class="dropdown-item" href="#">Show Me Monke</a></li>
-            <li><a class="dropdown-item" href="#">Monke Replies</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Monke: What Gives?</a></li>
           </ul>
         </li>
         <li>
           <form class="d-flex justify-center">
-            <input class="form-control me-2" type="search" placeholder="Find Message or Monke" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input class="form-control me-2" type="search" placeholder="Find Message or Monke" aria-label="Search" id="navbar_search_form">
+            <button class="btn btn-dark" type="submit">Search</button>
           </form>
         </li>
       </ul>
