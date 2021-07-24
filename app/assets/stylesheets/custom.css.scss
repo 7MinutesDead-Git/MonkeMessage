@@ -1,13 +1,32 @@
 // Include bootstrap to be able to override its styles from here.
-@import "bootstrap/dist/css/bootstrap";
+// For css, you need to import from exact file name.
+// Squiggly means importing from node_modules library root.
+@import "~bootstrap/dist/css/bootstrap.css";
 
+// -----------------------------------------
 // Variables.
-$bg_color: #23282e;
+// #ffb300 awesome banana yellow.
+// #23282e Good dark grey-blue.
+$bg_color: #ffb300;
 
+// -----------------------------------------
 // Style overrides.
 .navbar {
   background-color: $bg_color !important;
   z-index: 0;
+}
+.dropdown-menu {
+  background-color: $bg_color + 5;
+}
+.dropdown-item {
+  color: $bg_color - 100;
+}
+.btn-outline-success {
+  //outline-color: $bg_color - 100;
+  border-color: $bg_color + 20;
+}
+.btn {
+  background-color: $bg_color + 10;
 }
 #MonkeLoop {
   position: fixed;
