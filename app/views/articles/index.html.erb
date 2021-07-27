@@ -1,42 +1,35 @@
-<h1>Messages to Monke</h1>
-
-
-<p>
-  <%= link_to('Create New Article', new_article_path, method: :get) %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <!-- Actions header should span 3 to cover Show, Edit and Delete links. -->
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <!-- Each article is going to make a new table row, and include each data (td). -->
-  <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.title %></td>
-    <td><%= article.description %></td>
-    <td><%= link_to('Show', article_path(article.id), method: :get) %> |</td>
-    <td><%= link_to('Edit', edit_article_path(article.id), method: :get) %> |</td>
-    <td>
-      <%= link_to(
-              'Delete',
-              article_path(article.id),
-              method: :delete,
-              data: {confirm: "Are you sure you want to delete '#{article.title}'?"}
-          )
-      %>
-    </td>
-  </tr>
-  <% end %>
-
-  </tbody>
-
-</table>
+<h1 class="text-center">Messages to Monke</h1>
 
 <p>
-<%= link_to('Create New Article', new_article_path, method: :get) %>
+  <a href="#" class="btn btn-primary">Create New Message</a>
+</p>
+
+<% @articles.each do |article| %>
+  <div class="row justify-content-center">
+    <div class="col-8 mt-5">
+      <div class="container">
+        <div class="card">
+
+          <div class="card-header">
+            Featured
+          </div>
+
+          <div class="bg-gradient card-body">
+            <h5 class="card-title"><%= article.title %></h5>
+            <p class="card-text"><%= article.description %></p>
+
+            <a href="#" class="btn btn-primary">View</a>
+            <a href="#" class="btn btn-primary">Edit</a>
+            <a href="#" class="btn btn-primary align-self-end">Delete</a>
+          </div>
+
+          <div class="card-footer text-muted">
+            Dates go here.
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

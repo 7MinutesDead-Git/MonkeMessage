@@ -92,6 +92,15 @@ $corner_radius: 30px;
   padding: 100px 0;
 }
 
+// -----------------------------------------
+// Articles view.
+.card {
+  border-radius: $corner_radius;
+  background-image: asset_url('monke_profile.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
 
 // -----------------------------------------
 // Footer.
