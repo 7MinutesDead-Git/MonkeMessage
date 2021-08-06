@@ -20,15 +20,25 @@
             <div class="font-monospace">
               <%= link_to("View", article_path(article), class: "btn btn-primary") %>
               <%= link_to("Edit", edit_article_path(article), class: "btn btn-primary") %>
-              <%= link_to("Delete", edit_article_path(article), class: "btn btn-danger") %>
+              <%= link_to(
+                    "Delete",
+                    article_path(article),
+                    class: "btn btn-danger",
+                    method: :delete,
+                    data: {confirm: "Do you want to delete #{article.title}?"}
+                  )
+              %>
             </div>
           </div>
 
           <div class="card-footer text-muted font-monospace">
-            <small>Posted <%= time_ago_in_words(article.created_at) %> ago. </small>
-            <% if article.updated_at != article.created_at %>
-              Edited <%=time_ago_in_words(article.updated_at) %> ago.
-            <% end %>
+            <small>
+              Posted <%= time_ago_in_words(article.created_at) %> ago.
+
+              <% if article.updated_at != article.created_at %>
+                Edited <%=time_ago_in_words(article.updated_at) %> ago.
+              <% end %>
+            </small>
           </div>
 
         </div>
