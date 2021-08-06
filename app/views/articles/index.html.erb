@@ -25,7 +25,10 @@
           </div>
 
           <div class="card-footer text-muted font-monospace">
-            Dates go here.
+            <small>Posted <%=article.created_at %>. </small>
+            <% if article.updated_at != article.created_at %>
+              Edited <%=article.updated_at %>.
+            <% end %>
           </div>
 
         </div>
