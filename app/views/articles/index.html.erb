@@ -25,9 +25,9 @@
           </div>
 
           <div class="card-footer text-muted font-monospace">
-            <small>Posted <%=article.created_at %>. </small>
+            <small>Posted <%= time_ago_in_words(article.created_at) %> ago. </small>
             <% if article.updated_at != article.created_at %>
-              Edited <%=article.updated_at %>.
+              Edited <%=time_ago_in_words(article.updated_at) %> ago.
             <% end %>
           </div>
 
