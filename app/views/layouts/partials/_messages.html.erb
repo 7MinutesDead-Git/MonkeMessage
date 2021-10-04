@@ -1,4 +1,8 @@
 <%# Allow for flash notifications.%>
-<% flash.each do |name, message| %>
-  <%= message %>
-<% end %>
+<div class="container">
+  <% flash.each do |name, message| %>
+    <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+      <%= message %>
+    </div>
+  <% end %>
+</div>
