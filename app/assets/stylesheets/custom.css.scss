@@ -8,7 +8,7 @@
 // #ffb300 awesome banana yellow.
 // #23282e Good dark grey-blue.
 $bg_color: #23282e;
-$corner_radius: 30px;
+$corner_radius: 5px;
 
 // -----------------------------------------
 // Navigation Bar.
@@ -105,6 +105,14 @@ $corner_radius: 30px;
   position: fixed;
   top: 75px;
   left: 20px;
+}
+
+.card-body {
+  background: fade-out($bg_color, 0.4)
+}
+
+.card-header {
+  background: fade-out($bg_color, 0.8)
 }
 
 
