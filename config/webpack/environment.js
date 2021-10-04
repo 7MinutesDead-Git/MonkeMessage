@@ -1,5 +1,4 @@
 const { environment } = require('@rails/webpacker')
-
 const webpack = require("webpack")
 
 // So we can load in jquery and popper plugins for use with Bootstrap.
