@@ -1,49 +1,51 @@
-<h1 class="text-center">Messages to Monke</h1>
+<div id="page-content">
+  <h1 class="text-center">Messages to Monke</h1>
 
-<p>
-  <%= link_to("Create New Message", new_article_path, class: "btn btn-success", id: "create_new_message_btn") %>
-</p>
+  <p>
+    <%= link_to("Create New Message", new_article_path, class: "btn btn-success", id: "create_new_message_btn") %>
+  </p>
 
-<% @articles.each do |article| %>
-  <div class="row justify-content-center">
-    <div class="col-8 mt-5">
-      <div class="container">
-        <div class="card">
+  <% @articles.each do |article| %>
+    <div class="row justify-content-center">
+      <div class="col-8 mt-5">
+        <div class="container">
+          <div class="card">
 
-          <div class="card-header font-monospace">
-            Author: Peepoo Boy
-          </div>
-
-          <div class="bg-gradient card-body shadow">
-            <h5 class="card-title"><%= article.title %></h5>
-            <p class="card-text"><%= article.description %></p>
-            <div class="font-monospace">
-              <%= link_to("View", article_path(article), class: "btn btn-primary") %>
-              <%= link_to("Edit", edit_article_path(article), class: "btn btn-primary") %>
-              <%= link_to(
-                    "Delete",
-                    article_path(article),
-                    class: "btn btn-danger",
-                    method: :delete,
-                    data: {confirm: "Do you want to delete #{article.title}?"}
-                  )
-              %>
+            <div class="card-header font-monospace">
+              Author: Peepoo Boy
             </div>
+
+            <div class="bg-gradient card-body shadow">
+              <h5 class="card-title"><%= article.title %></h5>
+              <p class="card-text"><%= article.description %></p>
+              <div class="font-monospace">
+                <%= link_to("View", article_path(article), class: "btn btn-primary") %>
+                <%= link_to("Edit", edit_article_path(article), class: "btn btn-primary") %>
+                <%= link_to(
+                      "Delete",
+                      article_path(article),
+                      class: "btn btn-danger",
+                      method: :delete,
+                      data: {confirm: "Do you want to delete #{article.title}?"}
+                    )
+                %>
+              </div>
+            </div>
+
+            <div class="card-footer text-muted font-monospace">
+              <small>
+                Posted <%= time_ago_in_words(article.created_at) %> ago.
+
+                <% if article.updated_at != article.created_at %>
+                  Edited <%=time_ago_in_words(article.updated_at) %> ago.
+                <% end %>
+              </small>
+            </div>
+
           </div>
-
-          <div class="card-footer text-muted font-monospace">
-            <small>
-              Posted <%= time_ago_in_words(article.created_at) %> ago.
-
-              <% if article.updated_at != article.created_at %>
-                Edited <%=time_ago_in_words(article.updated_at) %> ago.
-              <% end %>
-            </small>
-          </div>
-
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
-<% end %>
+</div>

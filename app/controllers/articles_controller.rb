@@ -79,7 +79,7 @@ class ArticlesController < ApplicationController
       redirect_to(@article)
     else
       # If it fails, render "new" template again.
-      flash[:alert] = 'Article did not save.'
+      flash[:alert] = 'Article did not save!'
       render('new')
     end
 
