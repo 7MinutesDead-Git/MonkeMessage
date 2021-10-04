@@ -34,7 +34,8 @@ class ArticlesController < ApplicationController
   # ----------------
   # Show articles index (overview of articles).
   def index
-    @articles = Article.all
+    # NOTE: Without indices, if the DB ever got large, this could be a big slowdown.
+    @articles = Article.all.order(created_at: :desc)
   end
 
   # ----------------
