@@ -1,34 +1,49 @@
-<!-- Display error messages if submitted edit failed. -->
-<!-- @article variable is part of ArticlesController class, grabbed during edit method. -->
-<% if @article.errors.any? %>
-  <h2>Unable to save article edits (make sure the following errors are fixed first then try again).</h2>
+<div class="container">
 
-  <ul> <% @article.errors.full_messages.each do |error_message| %>
-      <li>
-        <%= error_message %>
-      </li>
-    <% end %> </ul>
+  <div class="row justify-content-center">
+    <div class="col-10">
 
-<% end %>
+      <%# -------------------------------------------------------------------------------- %>
+      <%# Render errors form partial that checks for error messages. %>
+      <%= render('shared/errors') %>
 
-<!-- Setting local to true means using standard http post instead of ajax. -->
-<!-- To submit an edit, we need to PATCH to /articles/:id, and "model: @article" will do that. -->
-<%= form_with(model: @article, local: true) do |f| %>
+      <%# -------------------------------------------------------------------------------- %>
+      <%# Setting local to true means using standard http post instead of ajax. %>
+      <%# To submit an edit, we need to PATCH to /articles/:id, and "model: @article" will do that. %>
+      <%= form_with(model: @article, class: "shadow mb-1 p-3 bg-transparent rounded", local: true) do |f| %>
 
-  <p>
-    <!-- Text input here will be saved as article title. -->
-    <%= f.label :title %><br/>
-    <%= f.text_field :title %>
-  </p>
+        <%# Title group. --------------------- %>
+        <div class="form-group row shadow mb-3 rounded">
+          <%= f.label :title, class: "col-2 col-form-label" %>
 
-  <p>
-    <!-- Text input here will be saved as article description. -->
-    <%= f.label :description %><br/>
-    <%= f.text_area :description %>
-  </p>
+          <div class="col-12">
+            <%= f.text_field :title, class: "form-control bg-dark text-light" %>
+          </div>
+        </div>
 
-  <p>
-    <!-- Button to submit new article to db. -->
-    <%= f.submit %>
-  </p>
-<% end %>
+        <%# Description group. --------------------- %>
+        <div class="form-group row shadow mb-3 rounded">
+          <%= f.label :description, class: "col-2 col-form-label" %>
+
+          <div class="col-12">
+            <%= f.text_area :description, rows: 5, class: "form-control bg-dark text-light" %>
+          </div>
+        </div>
+
+        <%# Button group. --------------------- %>
+        <div class="form-group row">
+          <div>
+            <%= f.submit class: "btn btn-outline-light" %>
+          </div>
+        </div>
+      <% end %>
+
+      <%# -------------------------------------------------------------------------------- %>
+      <%# Cancel / return link. %>
+      <div class="text-secondary">
+        <%= link_to('[ Cancel and Return To Messages ]', articles_path, method: :get, class: "btn-outline-secondary") %>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,16 @@
+<%# Display error messages if submitted edit failed. %>
+<%# @article variable is part of ArticlesController class, grabbed during edit method. %>
+
+<% if @article.errors.any? %>
+  <div class="container">
+    <p class="text-warning">Submission failed:</p>
+
+    <ul>
+      <% @article.errors.full_messages.each do |error_message| %>
+        <li>
+          <p class="text-secondary"><%= error_message %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
