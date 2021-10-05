@@ -12,15 +12,17 @@
           <div class="card">
 
             <div class="card-header font-monospace">
-              Author: Peepoo Boy
+              Author: Anonymous
             </div>
 
             <div class="bg-gradient card-body shadow">
               <h5 class="card-title"><%= article.title %></h5>
-              <p class="card-text"><%= article.description %></p>
+              <p class="card-text"><%= truncate(article.description, length: 200) %></p>
               <div class="font-monospace">
-                <%= link_to("View", article_path(article), class: "btn btn-primary") %>
-                <%= link_to("Edit", edit_article_path(article), class: "btn btn-primary") %>
+                <% if article.description.length > 200 %>
+                  <%= link_to("View Full", article_path(article), class: "btn btn-primary") %>
+                <% end %>
+                <%= link_to("Edit", edit_article_path(article), class: "btn btn-dark") %>
                 <%= link_to(
                       "Delete",
                       article_path(article),
