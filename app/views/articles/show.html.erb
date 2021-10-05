@@ -13,7 +13,12 @@
           </div>
 
           <div class="bg-gradient card-body shadow">
-            <p class="card-text"><%= @article.description %></p>
+
+            <p class="card-text">
+              <%# Simple Format keeps the formatting of the article (paragraphs, spacing, etc). %>
+              <%= simple_format(@article.description) %>
+            </p>
+
             <div class="font-monospace">
               <%= link_to("Edit", edit_article_path(@article), class: "btn btn-secondary") %>
               <%= link_to(
