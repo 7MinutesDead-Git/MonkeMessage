@@ -34,16 +34,12 @@
         <%# Button group. --------------------- %>
         <div class="form-group row">
           <div>
-            <%= f.submit class: "btn btn-outline-light" %>
+            <%= f.submit class: "btn btn-success" %>
+            <%= link_to('Cancel', articles_path, method: :get, class: "btn btn-outline-secondary") %>
           </div>
         </div>
       <% end %>
 
-      <%# -------------------------------------------------------------------------------- %>
-      <%# Cancel / return link. %>
-      <div class="text-secondary">
-        <%= link_to('[ Cancel and Return To Messages ]', articles_path, method: :get, class: "btn-outline-secondary") %>
-      </div>
     </div>
   </div>
 
