@@ -62,7 +62,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = 'Article updated.'
       redirect_to(@article)
     else
-      flash[:alert] = 'Article edit did not save!'
+      flash[:alert] = 'Edit did not save!'
       render('edit')
     end
   end
