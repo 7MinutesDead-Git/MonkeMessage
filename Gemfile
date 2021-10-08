@@ -28,6 +28,11 @@ gem 'pg'
 # Reduces boot times through caching; required in config/boot.rb.
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# Required to resolve build error: "couldn't find file 'bootstrap' with type 'text/css'"
+# Build errors initially encountered after updating outdated packages to resolve
+# security exploits pointed out by Github.
+gem 'bootstrap-sass', '3.3.6'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console.
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

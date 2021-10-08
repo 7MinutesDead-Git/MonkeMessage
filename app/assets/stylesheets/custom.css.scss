@@ -2,6 +2,8 @@
 // For css, you need to import from exact file name.
 // Squiggly means importing from node_modules library root.
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 // -----------------------------------------
 // Variables.
