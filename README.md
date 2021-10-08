@@ -1,5 +1,7 @@
 # README
 
+TODO! I'll fill this out eventually. For now, I'm going to leave the default recommendations up so I don't forget, as these are good recommendations.  
+  
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
