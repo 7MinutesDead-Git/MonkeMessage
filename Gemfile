@@ -28,11 +28,11 @@ gem 'pg'
 # Reduces boot times through caching; required in config/boot.rb.
 gem 'bootsnap', '>= 1.4.4', require: false
 
-# # Required to resolve build error: "couldn't find file 'bootstrap' with type 'text/css'"
-# # Build errors initially encountered after updating outdated packages to resolve
-# # security exploits pointed out by Github.
-# # https://github.com/twbs/bootstrap-sass#a-ruby-on-rails
-# gem "bootstrap-sass", ">= 3.4.1"
+# TODO: Resolve Sprockets::FileNotFound: couldn't find file 'bootstrap' with type 'text/css' error.
+# https://stackoverflow.com/questions/42597050/what-is-the-best-way-to-install-bootstrap-with-rails-app/42598334
+# https://stackoverflow.com/questions/39217510/couldnt-find-file-bootstrap-with-type-text-css/43291886
+# https://stackoverflow.com/questions/36359801/sprocketsfilenotfound-couldnt-find-file-bootstrap-with-type-text-css
+gem 'bootstrap-sass'
 
 # Required by Javascript if using Rails 5.1 or higher.
 gem 'jquery-rails'
