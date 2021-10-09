@@ -31,7 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Required to resolve build error: "couldn't find file 'bootstrap' with type 'text/css'"
 # Build errors initially encountered after updating outdated packages to resolve
 # security exploits pointed out by Github.
-gem 'bootstrap-sass', '3.3.6'
+gem 'bootstrap-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console.
