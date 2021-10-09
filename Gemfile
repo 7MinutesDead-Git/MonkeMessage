@@ -28,16 +28,18 @@ gem 'pg'
 # Reduces boot times through caching; required in config/boot.rb.
 gem 'bootsnap', '>= 1.4.4', require: false
 
-# Required to resolve build error: "couldn't find file 'bootstrap' with type 'text/css'"
-# Build errors initially encountered after updating outdated packages to resolve
-# security exploits pointed out by Github.
-gem 'bootstrap-sass'
+# # Required to resolve build error: "couldn't find file 'bootstrap' with type 'text/css'"
+# # Build errors initially encountered after updating outdated packages to resolve
+# # security exploits pointed out by Github.
+# # https://github.com/twbs/bootstrap-sass#a-ruby-on-rails
+# gem "bootstrap-sass", ">= 3.4.1"
+
+# Required by Javascript if using Rails 5.1 or higher.
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console.
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  # Use sqlite3 as the database for Active Record (Heroku recommends against this, opting instead for pg).
-  # gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
