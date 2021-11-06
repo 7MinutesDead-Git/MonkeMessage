@@ -1,4 +1,4 @@
-
+# The messages sent and received by users and monkes.
 class Article < ApplicationRecord
   belongs_to(:user)
 
