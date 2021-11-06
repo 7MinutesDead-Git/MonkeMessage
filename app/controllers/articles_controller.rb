@@ -72,6 +72,9 @@ class ArticlesController < ApplicationController
   def create
     # A new Article object with the permitted title and description params.
     @article = Article.new(permitted_params)
+    # TODO: Temporary.
+    #   Replace with user once authentication is in place.
+    @article.user = (User.first || 'anonymous')
 
     # Save new article to db. See notes at top.
     if @article.save
