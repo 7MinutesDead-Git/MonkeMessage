@@ -1,5 +1,7 @@
 
 class Article < ApplicationRecord
+  belongs_to(:user)
+
   # Ensures title and description are present in order for any Article to be saved.
   validates(
     :title,

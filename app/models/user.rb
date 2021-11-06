@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many(:articles)
+
   # Verify entry with .valid?.
   # After .valid? check (or .save attempt), if false, then .errors.full_messages can be checked.
 
