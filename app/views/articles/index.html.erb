@@ -11,23 +11,24 @@
         <div class="container">
           <div class="card">
 
+            <%# Author. %>
             <div class="card-header font-monospace">
-              Author: Anonymous
+              from <%= article.user.username %>.
             </div>
 
-            <%# Main card bodu. ----------------------------------------------------------- %>
+            <%# Main card body. ----------------------------------------------------------- %>
             <div class="bg-gradient card-body shadow">
-              <%# Title. ----------------------------------- %>
+              <%# Title. %>
               <h5 class="card-title">
                 <%= article.title %>
               </h5>
 
-              <%# Description. ----------------------------- %>
+              <%# Description. %>
               <p class="card-text">
                 <%= simple_format(truncate(article.description, length: 200)) %>
               </p>
 
-              <%# Buttons. --------------------------------- %>
+              <%# Buttons. %>
               <div class="font-monospace">
                 <% if article.description.length > 200 %>
                   <%= link_to("View Full", article_path(article), class: "btn btn-primary") %>
