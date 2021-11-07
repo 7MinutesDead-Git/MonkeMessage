@@ -33,7 +33,9 @@
 
         <%# Password. --------------------- %>
         <div class="form-group row shadow mb-3 rounded">
-          <%= user.label :password, class: "col-2 col-form-label" %>
+          <%# This allows us to use the same form partial for both editing profiles and creating a new account. %>
+          <%# We can swap the text based on if @user is a new record or not. %>
+          <%= user.label(@user.new_record? ? "Password" : "New Password", class: "col-2 col-form-label") %>
 
           <div class="col-12">
             <%= user.password_field :password, class: "form-control bg-dark text-light", placeholder: "***" %>
@@ -52,7 +54,8 @@
         <%# Buttons. --------------------- %>
         <div class="form-group row">
           <div>
-            <%= user.submit "Sign up", class: "btn btn-success" %>
+            <%# Checking for new_record means we can use this same button for both profile edits and new signups. %>
+            <%= user.submit(@user.new_record? ? "Signup" : "Save Changes", class: "btn btn-success") %>
             <%= link_to('Cancel', articles_path, method: :get, class: "btn btn-outline-secondary") %>
           </div>
         </div>

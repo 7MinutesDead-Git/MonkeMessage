@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   # ------------------------
+  # User creating a new account.
   def create
     @user = User.new(user_params)
     if @user.save
@@ -16,6 +17,25 @@ class UsersController < ApplicationController
       redirect_to(articles_path)
     else
       render('users/new')
+    end
+  end
+
+  # ------------------------
+  def edit
+    # Locates user by :id from Users table.
+    @user = User.find(params[:id])
+  end
+
+  # ------------------------
+  # User updating their profile.
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "Profile successfully updated."
+      # TODO: This will redirect to the user profile page.
+      redirect_to(articles_path)
+    else
+      render('edit')
     end
   end
 
