@@ -1,16 +1,18 @@
-<%# Display error messages if submitted edit failed. %>
-<%# @article variable is part of ArticlesController class, grabbed during edit method. %>
+<%# Display error messages relevant to the action used for whatever instance of that class. %>
+<%# For example, @article is part of ArticlesController class, grabbed during edit method. %>
+<%# @user would reference the user instance when attempting to, for example, create a new account. %>
 
-<% if @article.errors.any? %>
+<%# "item" in this case can refer to an article, a user, etc. Whatever is pulling from this error message logic.%>
+<% if item.errors.any? %>
   <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
     <strong>Oops! Double check the following:</strong>
     <%# TODO: Bootstrap js alerts doesn't seem to be loading, as the animations and buttons do not work for dismissing alert. %>
-<!--    <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
-<!--      <span aria-hidden="true">&times;</span>-->
-<!--    </button>-->
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
 
     <ul>
-      <% @article.errors.full_messages.each do |error_message| %>
+      <% item.errors.full_messages.each do |error_message| %>
         <li>
           <div>
             <%= error_message %>
