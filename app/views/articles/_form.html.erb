@@ -6,7 +6,7 @@
 
       <%# -------------------------------------------------------------------------------- %>
       <%# Render errors form partial that checks for error messages. %>
-      <%= render('shared/errors') %>
+      <%= render('shared/errors', item: @article) %>
 
       <%# -------------------------------------------------------------------------------- %>
       <%# Setting local to true means using standard http post instead of ajax. %>
