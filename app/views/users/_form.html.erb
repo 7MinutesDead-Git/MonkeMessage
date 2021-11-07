@@ -1,0 +1,64 @@
+<%# This is the form for both submitting and editing articles/messages. %>
+<div class="container">
+
+  <div class="row justify-content-center">
+    <div class="col-10">
+
+      <%# -------------------------------------------------------------------------------- %>
+      <%# Render errors form partial that checks for error messages. %>
+      <%= render('shared/errors', item: @user) %>
+
+      <%# -------------------------------------------------------------------------------- %>
+      <%# Setting local to true means using standard http post instead of ajax. %>
+      <%# To submit an edit, we need to PATCH to /articles/:id, and "model: @article" will do that. %>
+      <%= form_with(model: @user, class: "shadow mb-1 p-3 bg-transparent rounded", local: true) do |user| %>
+
+        <%# Username. --------------------- %>
+        <div class="form-group row shadow mb-3 rounded">
+          <%= user.label :username, class: "col-2 col-form-label" %>
+
+          <div class="col-12">
+            <%= user.text_field :username, class: "form-control bg-dark text-light", placeholder: "CoolMonke1999" %>
+          </div>
+        </div>
+
+        <%# Email. --------------------- %>
+        <div class="form-group row shadow mb-3 rounded">
+          <%= user.label :email, class: "col-2 col-form-label" %>
+
+          <div class="col-12">
+            <%= user.email_field :email, class: "form-control bg-dark text-light", placeholder: "Monkey.D.Luffy@KingOfPirates.com" %>
+          </div>
+        </div>
+
+        <%# Password. --------------------- %>
+        <div class="form-group row shadow mb-3 rounded">
+          <%= user.label :password, class: "col-2 col-form-label" %>
+
+          <div class="col-12">
+            <%= user.password_field :password, class: "form-control bg-dark text-light", placeholder: "***" %>
+          </div>
+        </div>
+
+        <%# Confirm password. --------------------- %>
+        <div class="form-group row shadow mb-3 rounded">
+          <%= user.label :confirm_password, class: "col-3 col-form-label" %>
+
+          <div class="col-12">
+            <%= user.password_field :password, class: "form-control bg-dark text-light", placeholder: "***" %>
+          </div>
+        </div>
+
+        <%# Buttons. --------------------- %>
+        <div class="form-group row">
+          <div>
+            <%= user.submit class: "btn btn-success" %>
+            <%= link_to('Cancel', articles_path, method: :get, class: "btn btn-outline-secondary") %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
+</div>

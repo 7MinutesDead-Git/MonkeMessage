@@ -30,9 +30,12 @@ Rails.application.routes.draw do
   get('monke_replies', to: 'pages#monke_replies')
   get('monke_info', to: 'pages#monke_info')
 
-  # Article resources.
+  get('signup', to: 'users#new')
+
+  # Article and User resources.
   # Resources provide RESTful routes to Rails resources.
   # "only:" means only generate routes for the given actions.
   # https://guides.rubyonrails.org/routing.html#crud-verbs-and-actions
   resources(:articles, only: [:show, :index, :new, :create, :edit, :update, :destroy])
+  resources(:users, except: [:new])
 end
