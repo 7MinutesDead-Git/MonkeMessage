@@ -45,14 +45,14 @@
           <%= user.label :confirm_password, class: "col-3 col-form-label" %>
 
           <div class="col-12">
-            <%= user.password_field :password, class: "form-control bg-dark text-light", placeholder: "***" %>
+            <%= user.password_field :password_confirmation, class: "form-control bg-dark text-light", placeholder: "***" %>
           </div>
         </div>
 
         <%# Buttons. --------------------- %>
         <div class="form-group row">
           <div>
-            <%= user.submit class: "btn btn-success" %>
+            <%= user.submit "Sign up", class: "btn btn-success" %>
             <%= link_to('Cancel', articles_path, method: :get, class: "btn btn-outline-secondary") %>
           </div>
         </div>
