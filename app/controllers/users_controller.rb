@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+    @articles = @user.articles
+  end
+
   # ------------------------
   # User creating a new account.
   def create

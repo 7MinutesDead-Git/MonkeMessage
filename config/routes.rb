@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   root('pages#home')
   # Load about page when requesting /about.
   get('about', to:'pages#about')
+
   get('monke_gallery', to: 'pages#monke_gallery')
   get('monke_replies', to: 'pages#monke_replies')
   get('monke_info', to: 'pages#monke_info')
