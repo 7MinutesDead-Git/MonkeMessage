@@ -2,10 +2,15 @@
 # with :username, :email and :password attributes.
 class UsersController < ApplicationController
   # ------------------------
+  def index
+    @users = User.all
+  end
+  # ------------------------
   def new
     @user = User.new
   end
 
+  # ------------------------
   def show
     @user = User.find(params[:id])
     @articles = @user.articles

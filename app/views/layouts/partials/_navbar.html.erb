@@ -11,12 +11,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle btn-success" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Messages
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><%= link_to("My Messages", articles_path, class: 'dropdown-item') %></li>
-            <li><%= link_to("Make New Message", new_article_path, class: 'dropdown-item') %></li>
+            <li><%= link_to("Write To Monke", new_article_path, class: 'dropdown-item ') %></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -26,6 +26,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><%= link_to("Replies From Monke", monke_replies_path, class: 'dropdown-item') %></li>
             <li><%= link_to("Show Me Monke", monke_gallery_path, class: 'dropdown-item') %></li>
+            <li><%= link_to("Monke Lovers", users_path, class: 'dropdown-item') %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to("Monke: What Gives?", monke_info_path, class: 'dropdown-item') %></li>
           </ul>

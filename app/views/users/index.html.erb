@@ -1,0 +1,46 @@
+<%#  https://guides.rubyonrails.org/form_helpers.html %>
+
+<div id="page-content">
+  <h1 class="text-center">Fellow Monke Lovers</h1>
+
+  <% @users.each do |user| %>
+    <div class="row justify-content-center">
+      <div class="col-8 mt-5">
+        <div class="container">
+          <div class="card">
+
+            <%# User profile link. %>
+            <div class="card-header font-monospace">
+              <%= user.username %>
+            </div>
+
+            <%# Main card body. ----------------------------------------------------------- %>
+            <div class="bg-gradient card-body shadow">
+              <%# Profile pic. %>
+              <%# ------------ %>
+
+              <%# Message count. %>
+              <p class="card-text">
+                <%= pluralize(user.articles.count, "message") %> to Monke.
+              </p>
+
+              <%# Buttons. %>
+              <div class="font-monospace">
+                <%= link_to("View Profile", user_path(user), class: "btn btn-primary") %>
+                <%= link_to("Message", new_article_path, class: "btn btn-success") %>
+              </div>
+            </div>
+
+            <%# Timestamp footer. ----------------------------------------------------- %>
+            <div class="card-footer text-muted font-monospace">
+              <small>
+                Joined <%= time_ago_in_words(user.created_at)%> ago.
+              </small>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
