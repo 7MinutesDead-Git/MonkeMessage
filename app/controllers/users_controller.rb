@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Successfully created account!"
       # TODO: This will redirect to the new user page.
       #   Best case, it should redirect to a page that tells the user to check their email to confirm account.
-      redirect_to(article_path)
+      redirect_to(articles_path)
     else
       render('users/new')
     end
