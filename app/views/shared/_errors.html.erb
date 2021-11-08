@@ -6,10 +6,7 @@
 <% if item.errors.any? %>
   <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
     <strong>Oops! Double check the following:</strong>
-    <%# TODO: Bootstrap js alerts doesn't seem to be loading, as the animations and buttons do not work for dismissing alert. %>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
     <ul>
       <% item.errors.full_messages.each do |error_message| %>
