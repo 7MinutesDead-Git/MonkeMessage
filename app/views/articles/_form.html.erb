@@ -34,8 +34,16 @@
         <%# Button group. --------------------- %>
         <div class="form-group row">
           <div>
-            <%= f.submit class: "btn btn-success" %>
-            <%= link_to('Cancel', articles_path, method: :get, class: "btn btn-outline-secondary") %>
+            <%# Coming from the edit button, we'll have a user attribute present. %>
+            <% if @article.user %>
+              <%= f.submit("Update", class: "btn btn-success")%>
+              <%= link_to('Cancel', @article.user, method: :get, class: "btn btn-outline-secondary") %>
+
+            <%# Otherwise this is a brand new message. %>
+            <% else %>
+              <%= f.submit("Send it", class: "btn btn-success")%>
+              <%= link_to('Cancel', articles_path, method: :get, class: "btn btn-outline-secondary") %>
+            <% end %>
           </div>
         </div>
       <% end %>
