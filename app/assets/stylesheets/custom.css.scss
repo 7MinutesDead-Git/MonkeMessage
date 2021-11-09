@@ -3,6 +3,9 @@
 // #ffb300 awesome banana yellow.
 // #23282e Good dark grey-blue.
 $bg_color: #23282e;
+$bg_color_very_light_offset: #23282e + 100;
+$bg_color_light_offset: #23282e + 20;
+$banana_yellow: #ffb300;
 $corner_radius: 5px;
 
 // -----------------------------------------
@@ -16,7 +19,7 @@ $corner_radius: 5px;
   background-color: $bg_color + 5;
 }
 .dropdown-item {
-  color: $bg_color + 100;
+  color: $bg_color_very_light_offset;
 }
 .btn-outline-success {
   border-color: $bg_color + 20;
@@ -25,11 +28,11 @@ $corner_radius: 5px;
   background-color: $bg_color + 10;
 }
 .dropdown-divider {
-  color: $bg_color + 100;
+  color: $bg_color_very_light_offset;
 }
 #navbar_search_form {
   background-color: $bg_color + 20;
-  caret-color: $bg_color + 100;
+  caret-color: $bg_color_very_light_offset;
   border-color: $bg_color + 50;
 }
 
@@ -110,6 +113,20 @@ $corner_radius: 5px;
   background: fade-out($bg_color, 0.8)
 }
 
+// The link for the profile of the user/author of a message.
+.link-user {
+  color: $banana_yellow;
+}
+
+// -----------------------------------------
+// User profile view.
+.user-profile-header-prefix {
+  color: $bg_color_light_offset;
+}
+
+.user-profile-header-username {
+  color: $banana_yellow;
+}
 
 // -----------------------------------------
 // Footer.
