@@ -18,6 +18,7 @@ class User < ApplicationRecord
             format: { with: URI::MailTo::EMAIL_REGEXP })
 
   # Ensure user provides a secure password before accepting save into database.
+  # This also verifies :password and :password_confirmation match.
   # Part of BCrypt gem.
   # https://edgeapi.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
   has_secure_password

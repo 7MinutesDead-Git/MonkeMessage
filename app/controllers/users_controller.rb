@@ -42,8 +42,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "Profile successfully updated."
-      # TODO: This will redirect to the user profile page.
-      redirect_to(articles_path)
+      redirect_to(user_path)
     else
       render('edit')
     end
@@ -55,6 +54,6 @@ class UsersController < ApplicationController
   # The user_params required and permitted for creating a new user/account.
   # This will require a :user instance, with :username, :email and :password as attributes.
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end
