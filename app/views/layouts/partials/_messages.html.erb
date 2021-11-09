@@ -3,10 +3,10 @@
   <%# Check articles_controller.rb for specific name/message inputs. %>
   <% flash.each do |name, message| %>
     <% if name != 'alert' %>
-    <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-      <%= message %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+      <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+        <%= message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     <% end %>
   <% end %>
 </div>
