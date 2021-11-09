@@ -6,7 +6,9 @@
 
           <%# Author. %>
           <div class="card-header font-monospace">
-            from <%= article.user.username %>.
+            <% if article.user %>
+              from <%= link_to(article.user.username, user_path(article.user), class: "link-user") %>
+            <% end %>
           </div>
 
           <%# Main card body. ----------------------------------------------------------- %>
