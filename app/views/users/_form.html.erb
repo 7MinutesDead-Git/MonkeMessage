@@ -55,8 +55,13 @@
         <div class="form-group row">
           <div>
             <%# Checking for new_record means we can use this same button for both profile edits and new signups. %>
-            <%= user.submit(@user.new_record? ? "Signup" : "Save Changes", class: "btn btn-success") %>
-            <%= link_to('Cancel', articles_path, method: :get, class: "btn btn-outline-secondary") %>
+            <% if @user.new_record? %>
+              <%= user.submit("Signup", class: "btn btn-success") %>
+              <%= link_to('Cancel', root_path, method: :get, class: "btn btn-outline-secondary") %>
+            <% else %>
+              <%= user.submit("Save Changes", class: "btn btn-success") %>
+              <%= link_to('Cancel', @user, method: :get, class: "btn btn-outline-secondary") %>
+            <% end %>
           </div>
         </div>
       <% end %>
