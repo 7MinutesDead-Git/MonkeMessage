@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   # ------------------------
   def index
     # Paginate all users for performance and infinite scrolling!
-    @pagy, @users = pagy(User.all, items: "10")
+    @pagy, @users = pagy(User.all, items: 10)
   end
+
   # ------------------------
   def new
     @user = User.new
@@ -13,6 +14,8 @@ class UsersController < ApplicationController
 
   # ------------------------
   def show
+    # TODO: Figure out how to paginate search results.
+    # @pagy, @user = pagy(User.find(params[:id]))
     @user = User.find(params[:id])
     @articles = @user.articles
   end
@@ -22,7 +25,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Successfully created account!"
+      flash[:notice] = 'Successfully created account!'
       redirect_to(user_path)
     else
       render('users/new')
@@ -40,7 +43,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "Profile successfully updated."
+      flash[:notice] = 'Profile successfully updated.'
       redirect_to(user_path)
     else
       render('edit')
