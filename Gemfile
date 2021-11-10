@@ -11,9 +11,10 @@ gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
-# Turbolinks makes navigating your web application faster. Read more:
-# https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+
+# https://github.com/hotwired/turbo-rails
+gem 'turbo-rails'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # PostGres recommended by Heroku for dev and production databases.
