@@ -1,10 +1,11 @@
 
+// Animation function.
+// Grab all .card classes on page and reveal as they come into view.
 function fadeCardsIn() {
     const window_top = $(window).scrollTop()
     const window_bottom = $(window).scrollTop() + $(window).innerHeight()
     const cards = $(".card")
 
-    // Add event listener to each card
     cards.each(function() {
         const card = $(this)
 
@@ -18,6 +19,6 @@ function fadeCardsIn() {
     })
 }
 
-// Add event listener to each card, that fires when element is in view.
+// Initially show anything in view on page load, and show more on scroll after.
 $(document).ready(fadeCardsIn)
 $(window).scroll(fadeCardsIn)
