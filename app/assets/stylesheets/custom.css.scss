@@ -139,6 +139,7 @@ $corner_radius: 5px;
   background-image: asset_url('monke_profile.jpg');
   background-position: center center;
   background-size: cover;
+  opacity: 0;
 }
 
 #create_new_message_btn {
@@ -173,16 +174,13 @@ $corner_radius: 5px;
 // -----------------------------------------
 // Footer.
 .footer {
-  // position: fixed;
   left: 0;
   bottom: 0;
-  width: auto;
+  width: fit-content;
   background-color: $bg_color;
   height: auto;
   color: white;
   text-align: left;
-  // High index so dropdown menus aren't covered up.
-  z-index: 10;
 }
 
 // -----------------------------------------
