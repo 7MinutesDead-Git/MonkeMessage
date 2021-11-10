@@ -139,6 +139,9 @@ $corner_radius: 5px;
   background-image: asset_url('monke_profile.jpg');
   background-position: center center;
   background-size: cover;
+  // Start card opacity at zero to be revealed by card_reveal.js.
+  // TODO: This should probably be done via the same js script,
+  //  or with some animation css class.
   opacity: 0;
 }
 
@@ -179,8 +182,11 @@ $corner_radius: 5px;
   width: fit-content;
   background-color: $bg_color;
   height: auto;
-  color: white;
   text-align: left;
+}
+
+.footer-github-btn {
+  color: $bg_color_very_light_offset;
 }
 
 // -----------------------------------------

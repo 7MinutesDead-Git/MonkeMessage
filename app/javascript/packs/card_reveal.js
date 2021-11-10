@@ -1,7 +1,8 @@
-
 // Animation function.
 // Grab all .card classes on page and reveal as they come into view.
 function fadeCardsIn() {
+    const fadeSpeed = 800
+    const opaque = 1
     const window_top = $(window).scrollTop()
     const window_bottom = $(window).scrollTop() + $(window).innerHeight()
     const cards = $(".card")
@@ -14,7 +15,7 @@ function fadeCardsIn() {
 
         // If our card is in the range of the window viewport.
         if ((window_bottom > card_top) && (window_top < card_bottom)) {
-            card.fadeTo(500, 1, "swing")
+            card.fadeTo(fadeSpeed, opaque, "swing")
         }
     })
 }

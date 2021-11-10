@@ -1,7 +1,8 @@
 <%#  https://guides.rubyonrails.org/form_helpers.html %>
 
 <div id="page-content">
-  <h1 class="text-center">Fellow Monke Lovers</h1>
+  <%= javascript_pack_tag 'card_reveal' %>
+  <h1 class="text-center" id="header-title-anim">Fellow Monke Lovers</h1>
 
   <%== pagy_bootstrap_nav(@pagy) %>
 

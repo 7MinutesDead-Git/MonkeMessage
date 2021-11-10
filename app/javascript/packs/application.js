@@ -12,6 +12,7 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
+import "animejs"
 
 Rails.start()
 ActiveStorage.start()
