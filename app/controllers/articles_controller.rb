@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
   # Show articles index (overview of articles).
   def index
     # Paginate all articles for performance and infinite scrolling!
-    @pagy, @articles = pagy(Article.all, items: 10)
+    @pagy, @articles = pagy(Article.all.order('created_at DESC'), items: 10)
   end
 
   # ----------------

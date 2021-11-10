@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   # ------------------------
   def index
-    # Paginate all users for performance and infinite scrolling!
+    # Paginate all users for performance and infinite scrolling.
     @pagy, @users = pagy(User.all, items: 10)
   end
 
@@ -13,11 +13,10 @@ class UsersController < ApplicationController
   end
 
   # ------------------------
+  # Shows the profile for the user, and their articles/messages.
   def show
-    # TODO: Figure out how to paginate search results.
-    # @pagy, @user = pagy(User.find(params[:id]))
     @user = User.find(params[:id])
-    @articles = @user.articles
+    @pagy, @articles = pagy(@user.articles.order('created_at DESC'), items: 10)
   end
 
   # ------------------------
