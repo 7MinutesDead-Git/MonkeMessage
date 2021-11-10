@@ -5,10 +5,16 @@
 require('../config/environment.rb')
 
 i = 0
-num = 15
+cycles = 30
 
-while i < num do
-  article = Article.new(title: "Message from monke #{i} of #{num}", description: "AAHH AAHHH AAAAHHH AHH")
-  article.save
+cycles.times do
+  article = Article.new(
+    title: "Aw shit here we go again #{i} of #{cycles}",
+    description: "AAHH AAHHH AAAAHHH AHH",
+    user: User.first
+  )
+  # So we will save the article, unless there are errors that prevent us from doing so,
+  # in which case print the errors so I can fix the test script and run again.
+  puts article.errors.full_messages unless article.save
   i += 1
 end
