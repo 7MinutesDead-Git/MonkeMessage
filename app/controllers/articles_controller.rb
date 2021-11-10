@@ -34,8 +34,8 @@ class ArticlesController < ApplicationController
   # ----------------
   # Show articles index (overview of articles).
   def index
-    # NOTE: Without indices, if the DB ever got large, this could be a big slowdown.
-    @articles = Article.all.order(created_at: :desc)
+    # Paginate all articles for performance and infinite scrolling!
+    @pagy, @articles = pagy(Article.all, items: 10)
   end
 
   # ----------------

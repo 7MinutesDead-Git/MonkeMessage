@@ -5,6 +5,7 @@
 $bg_color: #23282e;
 $bg_color_very_light_offset: #23282e + 100;
 $bg_color_light_offset: #23282e + 20;
+$bg_color_dark_offset: #23282e - 12;
 $banana_yellow: #ffb300;
 $corner_radius: 5px;
 
@@ -34,6 +35,47 @@ $corner_radius: 5px;
   background-color: $bg_color + 20;
   caret-color: $bg_color_very_light_offset;
   border-color: $bg_color + 50;
+}
+
+// -----------------------------------------
+// Pagination.
+.pagination {
+  margin: auto;
+  justify-content: center;
+}
+.pagination > li > a
+{
+  background-color: $bg_color;
+  color: $bg_color_very_light_offset;
+  border: 0;
+}
+
+.page-item.disabled .page-link {
+  color: $bg_color_dark_offset;
+  background-color: $bg_color;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+  color: $bg_color_light_offset;
+  background-color: $bg_color_very_light_offset;
+  border-color: $bg_color;
+}
+
+.pagination > .active > a
+{
+  color: $banana_yellow;
+  background-color: $banana_yellow !important;
+  border: solid 4px $banana_yellow !important;
+}
+
+.pagination > .active > a:hover
+{
+  background-color: $banana_yellow !important;
+  border: solid 4px $banana_yellow;
 }
 
 // -----------------------------------------

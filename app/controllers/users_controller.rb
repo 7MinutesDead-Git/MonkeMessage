@@ -3,7 +3,8 @@
 class UsersController < ApplicationController
   # ------------------------
   def index
-    @users = User.all
+    # Paginate all users for performance and infinite scrolling!
+    @pagy, @users = pagy(User.all, items: "10")
   end
   # ------------------------
   def new
@@ -22,9 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "Successfully created account!"
-      # TODO: This will redirect to the new user page.
-      #   Best case, it should redirect to a page that tells the user to check their email to confirm account.
-      redirect_to(articles_path)
+      redirect_to(user_path)
     else
       render('users/new')
     end
