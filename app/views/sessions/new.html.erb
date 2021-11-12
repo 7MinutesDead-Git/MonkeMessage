@@ -1,0 +1,50 @@
+<div id="page-content">
+  <h1 class="text-center">Hello!</h1>
+
+  <%# This is the form for logging in. %>
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-10">
+
+        <%# -------------------------------------------------------------------------------- %>
+        <%# Setting local to true means using standard http post instead of ajax. %>
+        <%# Since this isn't a model-backed form, Rails won't know where to submit this form to, %>
+        <%# so we'll provide the path directly. %>
+        <%= form_with(scope: :session, url: login_path, class: "shadow mb-1 p-3 bg-transparent rounded", local: true) do |user| %>
+
+          <%# Email. --------------------- %>
+          <div class="form-group row shadow mb-3 rounded">
+            <%= user.label :email, class: "col-2 col-form-label" %>
+
+            <div class="col-12">
+              <%= user.email_field :email, class: "form-control bg-dark text-light", placeholder: "Monkey.D.Luffy@KingOfPirates.com" %>
+            </div>
+          </div>
+
+          <%# Password. --------------------- %>
+          <div class="form-group row shadow mb-3 rounded">
+            <%# This allows us to use the same form partial for both editing profiles and creating a new account. %>
+            <%# We can swap the text based on if @user is a new record or not. %>
+            <%= user.label(:password, class: "col-2 col-form-label") %>
+
+            <div class="col-12">
+              <%= user.password_field :password, class: "form-control bg-dark text-light", placeholder: "***" %>
+            </div>
+          </div>
+
+          <%# Buttons. --------------------- %>
+          <div class="form-group row">
+            <div>
+              <%= user.submit("Log In", class: "btn btn-success") %>
+              <%= link_to('Cancel', root_path, method: :get, class: "btn btn-outline-secondary") %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

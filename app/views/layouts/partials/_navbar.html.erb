@@ -41,7 +41,9 @@
       <nav class="navbar navbar-dark bg-dark">
         <form class="container-fluid justify-content-start">
           <%= link_to("Create Account", signup_path, class: 'btn btn-outline-success me-2') %>
-          <button class="btn btn-sm btn-dark" type="button">Log In</button>
+          <%# TODO: Hide/swap Login/Logout buttons based on user session. %>
+          <%= link_to("Log In", login_path, class: 'btn btn-sm btn-dark') %>
+          <%= link_to("Log Out", logout_path, class: 'btn btn-sm btn-dark', method: :delete) %>
         </form>
       </nav>
     </div>

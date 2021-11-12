@@ -22,18 +22,20 @@
 #     - Backend methods (show, index, destroy, etc).
 
 Rails.application.routes.draw do
-  # The default page to load.
+  # Note to self --> get('webpage', to: 'controller#action').
   root('pages#home')
-  # Load about page when requesting /about.
-  get('about', to:'pages#about')
 
+  get('about', to:'pages#about')
   get('monke_gallery', to: 'pages#monke_gallery')
   get('monke_replies', to: 'pages#monke_replies')
   get('monke_info', to: 'pages#monke_info')
 
   get('signup', to: 'users#new')
+  # For handling user login sessions.
+  get('login', to: 'sessions#new')
+  post('login', to: 'sessions#create')
+  delete('logout', to: 'sessions#destroy')
 
-  # Article and User resources.
   # Resources provide RESTful routes to Rails resources.
   # "only:" means only generate routes for the given actions.
   # https://guides.rubyonrails.org/routing.html#crud-verbs-and-actions
