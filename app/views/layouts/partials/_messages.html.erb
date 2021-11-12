@@ -1,9 +1,17 @@
 <%# Allow for flash notifications.%>
 <div class="container">
-  <%# Check articles_controller.rb for specific name/message inputs. %>
   <% flash.each do |name, message| %>
+
     <% if name != 'alert' %>
+      <%# Success flash styling. %>
       <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+        <%= message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+    <% else %>
+      <%# Alert/warning flash styling. %>
+      <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
         <%= message %>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
