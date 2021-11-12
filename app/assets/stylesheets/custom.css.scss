@@ -40,8 +40,10 @@ $corner_radius: 5px;
 // -----------------------------------------
 // Pagination.
 .pagination {
-  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
   justify-content: center;
+  border-radius: 5px;
 }
 .pagination > li > a
 {
