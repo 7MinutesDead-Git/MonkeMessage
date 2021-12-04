@@ -41,4 +41,5 @@ Rails.application.routes.draw do
   # https://guides.rubyonrails.org/routing.html#crud-verbs-and-actions
   resources(:articles, only: [:show, :index, :new, :create, :edit, :update, :destroy])
   resources(:users, except: [:new])
+
 end
