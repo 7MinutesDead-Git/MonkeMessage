@@ -12,7 +12,9 @@
   </h1>
 
   <div class="text-center mt-4">
-    <%= link_to("Edit profile", edit_user_path(@user), class: "btn btn-primary") %>
+    <% if logged_in? && @user.username == current_user %>
+      <%= link_to("Edit profile", edit_user_path(@user), class: "btn btn-primary") %>
+    <% end %>
   </div>
 
   <%== pagy_bootstrap_nav(@pagy) %>

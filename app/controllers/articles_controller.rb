@@ -74,7 +74,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(permitted_params)
     # @article.user = (User.first || User())
     # TODO: Temporary anonymous account assignment for new messages so site can be tested on heroku.
-    @article.user = User.new(id: 42069, username: "Anon Monke", email: "temporary@temp", password: "yearight", password_confirmation: "yearight")
+    @article.user = current_user
 
     # Save new article to db. See notes at top.
     if @article.save

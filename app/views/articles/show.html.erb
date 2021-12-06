@@ -10,7 +10,9 @@
         <div class="card">
 
           <div class="card-header font-monospace">
-            from <%= @article.user.username %>.
+            <% if @article.user %>
+              from <%= link_to(@article.user.username, user_path(@article.user), class: "link-user") %>
+            <% end %>
           </div>
 
           <div class="bg-gradient card-body shadow">
@@ -21,15 +23,17 @@
             </p>
 
             <div class="font-monospace">
-              <%= link_to("Edit", edit_article_path(@article), class: "btn btn-secondary") %>
-              <%= link_to(
-                    "Delete",
-                    article_path(@article),
-                    class: "btn btn-danger",
-                    method: :delete,
-                    data: {confirm: "Do you want to delete '#{@article.title}' ?"}
-                  )
-              %>
+              <% if logged_in? && @article.user == current_user %>
+                <%= link_to("Edit", edit_article_path(@article), class: "btn btn-secondary") %>
+                <%= link_to(
+                      "Delete",
+                      article_path(@article),
+                      class: "btn btn-danger",
+                      method: :delete,
+                      data: {confirm: "Do you want to delete '#{@article.title}' ?"}
+                    )
+                %>
+              <% end %>
             </div>
           </div>
 

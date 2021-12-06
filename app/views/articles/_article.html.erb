@@ -29,15 +29,17 @@
                 <%= link_to("View Full", article_path(article), class: "btn btn-primary") %>
               <% end %>
 
-              <%= link_to("Edit", edit_article_path(article), class: "btn btn-dark") %>
-              <%= link_to(
-                    "Delete",
-                    article_path(article),
-                    class: "btn btn-danger",
-                    method: :delete,
-                    data: {confirm: "Do you want to delete this message: #{article.title}?"}
-                  )
-              %>
+              <% if logged_in? && article.user == current_user %>
+                <%= link_to("Edit", edit_article_path(article), class: "btn btn-dark") %>
+                <%= link_to(
+                      "Delete",
+                      article_path(article),
+                      class: "btn btn-danger",
+                      method: :delete,
+                      data: {confirm: "Do you want to delete this message: #{article.title}?"}
+                    )
+                %>
+              <% end %>
             </div>
           </div>
 

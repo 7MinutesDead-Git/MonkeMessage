@@ -1,7 +1,7 @@
 # Application controller for Users. Creating new users requires a User instance
 # with :username, :email and :password attributes.
 class UsersController < ApplicationController
-  # ------------------------
+  # ------------------------ ------------------------
   def index
     # Paginate all users for performance and infinite scrolling.
     @pagy, @users = pagy(User.all, items: 10)

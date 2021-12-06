@@ -15,8 +15,12 @@
             Messages
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><%= link_to("My Messages", articles_path, class: 'dropdown-item') %></li>
-            <li><%= link_to("Write To Monke", new_article_path, class: 'dropdown-item ') %></li>
+            <li><%= link_to("Monke Messages", articles_path, class: 'dropdown-item') %></li>
+            <% if logged_in? %>
+              <li><%= link_to("Write To Monke", new_article_path, class: 'dropdown-item ') %></li>
+            <% else %>
+              <li><%= link_to("Login to Write To Monke", login_path, class: 'dropdown-item ') %></li>
+            <% end %>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -41,6 +45,7 @@
       <nav class="navbar navbar-dark bg-dark">
         <form class="container-fluid justify-content-start">
           <% if logged_in? %>
+            <%= link_to(current_user.username, user_path(current_user), class: 'btn btn-sm btn-dark link-user') %>
             <%= link_to("Log Out", logout_path, class: 'btn btn-sm btn-dark', method: :delete) %>
           <% else %>
             <%= link_to("Create Account", signup_path, class: 'btn btn-outline-success me-2') %>
