@@ -1,4 +1,4 @@
-<%# This is the form for both submitting and editing articles/messages. %>
+<%# Form partial for new users signing up. %>
 <div class="container">
 
   <div class="row justify-content-center">
@@ -66,6 +66,9 @@
         </div>
       <% end %>
 
+      <div class="col-12 text-end">
+        <%= link_to("[ Already have an account? ]", login_path, class: "btn-outline-secondary") %>
+      </div>
     </div>
   </div>
 
