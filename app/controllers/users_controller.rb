@@ -3,8 +3,9 @@
 class UsersController < ApplicationController
   # ------------------------ ------------------------
   def index
+    set_max_pagy_items
     # Paginate all users for performance and infinite scrolling.
-    @pagy, @users = pagy(User.all, items: 10)
+    @pagy, @users = pagy(User.all, items: @max_pagy_items)
   end
 
   # ------------------------
@@ -16,7 +17,8 @@ class UsersController < ApplicationController
   # Shows the profile for the user, and their articles/messages.
   def show
     set_user
-    @pagy, @articles = pagy(@user.articles.order('created_at DESC'), items: 10)
+    set_max_pagy_items
+    @pagy, @articles = pagy(@user.articles.order('created_at DESC'), items: @max_pagy_items)
   end
 
   # ------------------------

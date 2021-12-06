@@ -34,21 +34,18 @@ class ArticlesController < ApplicationController
   # ----------------
   # Show articles index (overview of articles).
   def index
-    # Paginate all articles for performance and infinite scrolling!
+    # Paginate all articles for performance and infinite scrolling.
+    set_max_pagy_items
     @pagy, @articles = pagy(Article.all.order('created_at DESC'), items: 10)
   end
 
   # ----------------
   def new
-    # @new_article needs to be initialized here so that the
-    # errors parameter exists on first load of new.html.erb.
-    # This is because we won't have errors until we first try to submit a faulty article.
     @article = Article.new
   end
 
   # ----------------
-  # # Find requested article to edit so we can use it in edit.erb page.
-  # # We'll run "update" method from that page after submitting edits.
+  # Find requested article to edit so we can use it in edit.erb page.
   def edit
     @article = find_article_by_id
   end
@@ -57,7 +54,7 @@ class ArticlesController < ApplicationController
   # Update existing article with submitted changes via edit.html.erb.
   def update
     @article = find_article_by_id
-    # Update the article's given params (title and description).
+
     if @article.update(permitted_params)
       flash[:notice] = 'Article updated.'
       redirect_to(@article)
@@ -70,19 +67,13 @@ class ArticlesController < ApplicationController
   # ----------------
   # Create a new article and add it to the database.
   def create
-    # A new Article object with the permitted title and description params.
     @article = Article.new(permitted_params)
-    # @article.user = (User.first || User())
-    # TODO: Temporary anonymous account assignment for new messages so site can be tested on heroku.
     @article.user = current_user
 
-    # Save new article to db. See notes at top.
     if @article.save
       flash[:notice] = 'Article created.'
-      # Open a page showing the new article (redirects to :location param I think).
       redirect_to(@article)
     else
-      # If it fails, render "new" template again.
       flash[:alert] = 'Article did not save!'
       render('new')
     end
