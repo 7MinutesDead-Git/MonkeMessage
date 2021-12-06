@@ -25,6 +25,8 @@
 # ---------------------------------------------------
 # Controller for our Article actions.
 class ArticlesController < ApplicationController
+  before_action(:require_user, except: [:show, :index])
+  before_action(:require_same_user, only: [:edit, :update, :destroy])
   # ----------------
   # Returns matching Article with the requested :id.
   def show
@@ -105,6 +107,14 @@ class ArticlesController < ApplicationController
   # Find Article with given :id from RESTful request. Return Article object.
   def find_article_by_id
     Article.find(params[:id])
+  end
+
+  def require_same_user
+    @article = find_article_by_id
+    if current_user != @article.user
+      flash[:alert] = "This isn't your message to edit! Are you logged into the right account?"
+      redirect_to @article
+    end
   end
 
 end

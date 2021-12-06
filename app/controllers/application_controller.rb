@@ -16,6 +16,13 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def require_user
+    unless logged_in?
+      flash[:alert] = "Monkes must log in to do that."
+      redirect_to login_path
+    end
+  end
+
   def set_max_pagy_items
     @max_pagy_items = 10
   end
