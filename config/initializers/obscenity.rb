@@ -6,9 +6,6 @@ class Obscenity::Base
 
     blacklist.each do |foul|
       if text.scan(/(?=#{foul})/) >= 3 or foul == text && !whitelist.include?(foul)
-        puts text.count(foul)
-        puts foul
-        puts text
         return true
       end
     end
