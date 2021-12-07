@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
   before_action(:require_user, except: [:show, :index])
   before_action(:set_max_description_length, only: [:index])
   before_action(:require_same_article_user, only: [:edit, :update, :destroy])
+
   # ----------------
   # Returns matching Article with the requested :id.
   def show

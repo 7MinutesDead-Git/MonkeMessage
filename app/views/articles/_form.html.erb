@@ -37,14 +37,12 @@
             <%# Coming from the edit button, we'll have a user attribute present. %>
             <% if @article.user %>
               <% submit_text = "Update" %>
-              <% desired_path = @article.user %>
             <%# Otherwise this is a brand new message. %>
             <% else %>
               <% submit_text = "Send it" %>
-              <% desired_path = articles_path %>
             <% end %>
             <%= f.submit(submit_text, class: "btn btn-success")%>
-            <%= link_to('Cancel', desired_path, method: :get, class: "btn btn-outline-secondary") %>
+            <%= link_to('Cancel', session[:return_to], class: "btn btn-outline-secondary") %>
           </div>
         </div>
       <% end %>

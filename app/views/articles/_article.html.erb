@@ -26,6 +26,7 @@
             <%# Buttons. %>
             <div class="font-monospace">
               <% if article.description.length > 200 %>
+                <% store_return_to_url %>
                 <%= link_to("View Full", article_path(article), class: "btn btn-primary") %>
               <% end %>
 
