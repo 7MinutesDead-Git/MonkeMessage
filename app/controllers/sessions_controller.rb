@@ -13,7 +13,15 @@ class SessionsController < ApplicationController
       # Here we store the id in a session cookie, which is encrypted and cryptographically signed.
       session[:user_id] = user.id
       flash[:notice] = 'Logged in successfully.'
-      redirect_to(user)
+
+      if session[:return_to]
+        # So the user can return to their previous attempted page when
+        # redirected to login.
+        redirect_to(session[:return_to])
+      else
+        redirect_to(user)
+      end
+
     else
       # Since we are not redirecting (doing another full http request cycle),
       # the flash alert must happen "now". We are only re-rendering the page.

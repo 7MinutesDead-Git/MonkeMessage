@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
-  # Declaring something as a helper method allows these methods to be served to views as well as controllers.
-  helper_method(:current_user, :logged_in?, :set_max_pagy_items)
+  # Personal Notes: Declaring something as a helper method allows
+  #   these methods to be served to views as well as controllers.
+  helper_method(:current_user, :logged_in?, :set_max_pagy_items, :store_return_to_url)
 
   def current_user
     # Assigns the database query to @current_user, unless it already exists. "Or" assignment.
@@ -10,6 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
+    # Personal Notes:
     # Two bangs in rails turns the object into a boolean,
     # so we can simply confirm that current_user exists
     # to verify they are logged in.
@@ -18,6 +20,7 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless logged_in?
+      store_return_to_url
       flash[:alert] = "Monkes must log in to do that."
       redirect_to login_path
     end
@@ -25,5 +28,9 @@ class ApplicationController < ActionController::Base
 
   def set_max_pagy_items
     @max_pagy_items = 10
+  end
+
+  def store_return_to_url
+    session[:return_to] = request.url
   end
 end

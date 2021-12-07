@@ -1,3 +1,4 @@
+# Personal Notes:
 # frozen_string_literal: true
 # Adding methods here means rails will expect matching erb files in views/articles.
 # @variable is just a parameter/instance variable of the class.
@@ -93,7 +94,7 @@ class ArticlesController < ApplicationController
   # ----------------
   private
   # ----------------
-  # Strong Parameters!
+  # Personal Notes: Strong Parameters!
   # https://api.rubyonrails.org/classes/ActionController/StrongParameters.html
   # For params coming from a request, require the top level key of "article",
   # and only allow title and description to come through.
