@@ -106,13 +106,22 @@ class ArticlesController < ApplicationController
 
   # ----------------
   # Find Article with given :id from RESTful request. Return Article object.
+  # Returns nil if the article does not exist.
+  # Redirects to articles index when RecordNotFound.
   def find_article_by_id
-    Article.find(params[:id])
+    begin
+      Article.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "That message doesn't exist; At least not anymore."
+      redirect_to articles_path
+      return nil
+    end
+
   end
 
   def require_same_user
     @article = find_article_by_id
-    if current_user != @article.user
+    if @article and current_user != @article.user
       flash[:alert] = "This isn't your message to edit! Are you logged into the right account?"
       redirect_to @article
     end
