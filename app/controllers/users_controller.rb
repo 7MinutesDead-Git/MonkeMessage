@@ -1,9 +1,13 @@
 # Application controller for Users. Creating new users requires a User instance
 # with :username, :email and :password attributes.
 class UsersController < ApplicationController
+  before_action(:set_user, only: [:update, :edit, :show])
+  before_action(:require_user, only: [:edit, :update])
+  before_action(:require_same_user, only: [:edit, :update])
+  before_action(:set_max_pagy_items, only: [:show, :index])
+
   # ------------------------ ------------------------
   def index
-    set_max_pagy_items
     # Paginate all users for performance and infinite scrolling.
     @pagy, @users = pagy(User.all, items: @max_pagy_items)
   end
@@ -16,8 +20,6 @@ class UsersController < ApplicationController
   # ------------------------
   # Shows the profile for the user, and their articles/messages.
   def show
-    set_user
-    set_max_pagy_items
     @pagy, @articles = pagy(@user.articles.order('created_at DESC'), items: @max_pagy_items)
   end
 
@@ -37,13 +39,11 @@ class UsersController < ApplicationController
 
   # ------------------------
   def edit
-    set_user
   end
 
   # ------------------------
   # User updating their profile.
   def update
-    set_user
     if @user.update(user_params)
       flash[:notice] = 'Profile successfully updated.'
       redirect_to(user_path)
@@ -62,12 +62,14 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    # Calling this method can also be achieved with
-    #   before_action(:set_user, only: [:show, :edit, :update])
-    # and then removing the calls from those other methods,
-    # but I'm still debating which I find more readable.
-    #
     # Locates user by :id from Users table.
     @user = User.find(params[:id])
+  end
+
+  def require_same_user
+    if current_user != @user
+      flash[:alert] = "This isn't your profile to edit, Monke."
+      redirect_to @user
+    end
   end
 end
