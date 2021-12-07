@@ -3,19 +3,16 @@
 class Article < ApplicationRecord
   belongs_to(:user)
 
-  # Monke-safe censoring of excited messages.
-  monke_alternatives = ['oo OO AHH', 'AH AHH', 'oh OoO OO', 'AAHH OO AHH']
-
   validates(
     :title,
     presence: true,
     length: {minimum: 6, maximum: 100},
-    obscenity: { sanitize: true, replacement: monke_alternatives.sample}
+    obscenity: true
   )
   validates(
     :description,
     presence: true,
     length: {minimum: 10, maximum: 1000},
-    obscenity: { sanitize: true, replacement: monke_alternatives.sample}
+    obscenity: true
   )
 end
