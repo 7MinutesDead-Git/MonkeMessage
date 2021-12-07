@@ -115,6 +115,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.12.5-x64-mingw32)
       racc (~> 1.4)
+    obscenity (1.0.2)
     pagy (5.2.2)
     pg (1.2.3)
     pg (1.2.3-x64-mingw32)
@@ -222,6 +223,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   jbuilder (~> 2.7)
   jquery-rails
+  obscenity
   pagy (~> 5.2.2)
   pg
   puma (~> 5.0)
@@ -239,4 +241,4 @@ RUBY VERSION
    ruby 2.7.4p191
 
 BUNDLED WITH
-   2.2.24
+   2.2.31

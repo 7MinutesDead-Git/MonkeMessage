@@ -37,11 +37,18 @@ gem 'bootstrap-sass'
 # Required by Javascript if using Rails 5.1 or higher.
 gem 'jquery-rails'
 
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem.
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'obscenity'
+
+# ------------------------------------------------------------------------------
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console.
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
+# ------------------------------------------------------------------------------
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
@@ -51,6 +58,7 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
 end
 
+# ------------------------------------------------------------------------------
 group :test do
   # Adds support for Capybara system testing and selenium driver.
   gem 'capybara', '>= 3.26'
@@ -59,8 +67,6 @@ group :test do
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem.
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
+# ------------------------------------------------------------------------------
 group :production do
 end

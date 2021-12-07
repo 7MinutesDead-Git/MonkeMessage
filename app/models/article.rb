@@ -1,16 +1,21 @@
-# The messages sent and received by users and monkes.
+# The message sent and received by users and Monkes.
+# Belongs to user. Validates title, description and sanitizes input.
 class Article < ApplicationRecord
   belongs_to(:user)
 
-  # Ensures title and description are present in order for any Article to be saved.
+  # Monke-safe censoring of excited messages.
+  monke_alternatives = ['oo OO AHH', 'AH AHH', 'oh OoO OO', 'AAHH OO AHH']
+
   validates(
     :title,
     presence: true,
-    length: {minimum: 6, maximum: 100}
+    length: {minimum: 6, maximum: 100},
+    obscenity: { sanitize: true, replacement: monke_alternatives.sample}
   )
   validates(
     :description,
     presence: true,
-    length: {minimum: 10, maximum: 1000}
+    length: {minimum: 10, maximum: 1000},
+    obscenity: { sanitize: true, replacement: monke_alternatives.sample}
   )
 end
