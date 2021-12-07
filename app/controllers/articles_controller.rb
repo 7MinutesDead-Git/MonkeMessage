@@ -27,7 +27,7 @@
 # Controller for our Article actions.
 class ArticlesController < ApplicationController
   before_action(:require_user, except: [:show, :index])
-  before_action(:require_same_user, only: [:edit, :update, :destroy])
+  before_action(:require_same_article_user, only: [:edit, :update, :destroy])
   # ----------------
   # Returns matching Article with the requested :id.
   def show
@@ -119,7 +119,7 @@ class ArticlesController < ApplicationController
 
   end
 
-  def require_same_user
+  def require_same_article_user
     @article = find_article_by_id
     if @article and current_user != @article.user
       flash[:alert] = "This isn't your message to edit! Are you logged into the right account?"
