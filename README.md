@@ -1,20 +1,10 @@
 # README
+This is a Rails app for messaging monkeys, colloquially referred to as Monke. You will send them messages, and those monkeys will message you back. The magic of how that happens is a closely guarded secret (a work in progress haha). In the interim, I'm establishing basic scaffolding and functionality for messaging.
 
-TODO! I'll fill this out eventually. For now, I'm going to leave the default recommendations from Rails up so I don't forget, as these are good recommendations.  
+![image](https://user-images.githubusercontent.com/50963144/136717555-e35ff333-b79f-48ca-9364-2a6d4f6c5154.png)
+  
   
 ---------------------------------------------------------------------------  
-* Ruby version
+* Ruby version 2.7.4
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+Information on dependencies, configuration, database creation and initialization, test suite execution, and deployment instructions will come soon as the app starts coming together.
