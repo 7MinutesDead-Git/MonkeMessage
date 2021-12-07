@@ -27,6 +27,7 @@
 # Controller for our Article actions.
 class ArticlesController < ApplicationController
   before_action(:require_user, except: [:show, :index])
+  before_action(:set_max_description_length, only: [:index])
   before_action(:require_same_article_user, only: [:edit, :update, :destroy])
   # ----------------
   # Returns matching Article with the requested :id.
@@ -125,6 +126,10 @@ class ArticlesController < ApplicationController
       flash[:alert] = "This isn't your message to edit! Are you logged into the right account?"
       redirect_to @article
     end
+  end
+
+  def set_max_description_length
+    @max_description_length = 100
   end
 
 end
