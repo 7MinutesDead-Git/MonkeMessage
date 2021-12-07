@@ -5,7 +5,7 @@ class Obscenity::Base
     return(false) unless text.to_s.size >= 3
 
     blacklist.each do |foul|
-      if text.scan(/(?=#{foul})/) >= 3 or foul == text && !whitelist.include?(foul)
+      if foul.in?(text) && !whitelist.include?(foul)
         return true
       end
     end
