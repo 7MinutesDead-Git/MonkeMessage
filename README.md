@@ -5,6 +5,5 @@ This is a Rails app for messaging monkeys, colloquially referred to as Monke. Yo
   
   
 ---------------------------------------------------------------------------  
-* Ruby version 2.7.4
 
 Information on dependencies, configuration, database creation and initialization, test suite execution, and deployment instructions will come soon as the app starts coming together.
