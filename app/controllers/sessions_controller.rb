@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
 
     # If that user exists, and the correct password was supplied..
     if user&.authenticate(params[:session][:password])
-      store_session_cookie
-      redirect_user
+      store_session_cookie(user)
+      redirect_user(user)
     else
       rerender_on_failed_login
     end
@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
   end
 
   # --------------------------
-  def store_session_cookie
+  def store_session_cookie(user)
     # https://guides.rubyonrails.org/action_controller_overview.html#session
     # Here we store the id in a session cookie, which is encrypted and cryptographically signed.
     session[:user_id] = user.id
@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
   end
 
   # --------------------------
-  def redirect_user
+  def redirect_user(user)
     if session[:return_to]
       # So the user can return to their previous attempted page when
       # redirected to login.
