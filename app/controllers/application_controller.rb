@@ -7,12 +7,14 @@ class ApplicationController < ActionController::Base
   #   these methods to be served to views as well as controllers.
   helper_method(:current_user, :logged_in?, :set_max_pagy_items, :store_return_to_url)
 
+  # -----------------
   def current_user
     # Assigns the database query to @current_user, unless it already exists. "Or" assignment.
     # This is so we don't repeatedly query the db if we don't need to.
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  # -----------------
   def logged_in?
     # Personal Notes:
     # Two bangs in rails turns the object into a boolean,
@@ -21,6 +23,7 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  # -----------------
   def require_user
     return if logged_in?
 
@@ -29,10 +32,12 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
+  # -----------------
   def set_max_pagy_items
     @max_pagy_items = 10
   end
 
+  # -----------------
   def store_return_to_url
     session[:return_to] = request.url
   end
