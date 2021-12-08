@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Parent class for Articles, Pages, Users, Sessions, etc.
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   # Personal Notes: Declaring something as a helper method allows
@@ -19,11 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    unless logged_in?
-      store_return_to_url
-      flash[:alert] = "Monkes must log in to do that."
-      redirect_to login_path
-    end
+    return if logged_in?
+
+    store_return_to_url
+    flash[:alert] = 'Monkes must log in to do that.'
+    redirect_to login_path
   end
 
   def set_max_pagy_items

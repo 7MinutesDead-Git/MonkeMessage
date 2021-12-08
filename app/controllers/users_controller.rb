@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 # Application controller for Users. Creating new users requires a User instance
 # with :username, :email and :password attributes.
 class UsersController < ApplicationController
-  before_action(:set_user, only: [:update, :edit, :show])
-  before_action(:require_user, only: [:edit, :update])
-  before_action(:require_same_user, only: [:edit, :update])
-  before_action(:set_max_pagy_items, only: [:show, :index])
+  # https://github.com/rubocop/ruby-style-guide#i
+  before_action(:set_user, only: %i[update edit show])
+  before_action(:require_user, only: %i[edit update])
+  before_action(:require_same_user, only: %i[edit update])
+  before_action(:set_max_pagy_items, only: %i[show index])
 
   # ------------------------ ------------------------
   def index
@@ -38,8 +41,7 @@ class UsersController < ApplicationController
   end
 
   # ------------------------
-  def edit
-  end
+  def edit; end
 
   # ------------------------
   # User updating their profile.
@@ -54,6 +56,7 @@ class UsersController < ApplicationController
 
   # ------------------------ ------------------------
   private
+
   # ------------------------
   # The user_params required and permitted for creating a new user/account.
   # This will require a :user instance, with :username, :email and :password as attributes.
@@ -61,15 +64,17 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
+  # ------------------------
   def set_user
     # Locates user by :id from Users table.
     @user = User.find(params[:id])
   end
 
+  # ------------------------
   def require_same_user
-    if current_user != @user
-      flash[:alert] = "This isn't your profile to edit, Monke."
-      redirect_to @user
-    end
+    return unless current_user != @user
+
+    flash[:alert] = "This isn't your profile to edit, Monke."
+    redirect_to @user
   end
 end

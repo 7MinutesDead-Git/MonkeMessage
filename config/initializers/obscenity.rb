@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Obscenity base class override. Obscenity is a gem for filtering profane language.
 class Obscenity::Base
   # -------------------
   # Override profane check to include substring searches.
@@ -5,9 +8,7 @@ class Obscenity::Base
     return(false) unless text.to_s.size >= 3
 
     blacklist.each do |foul|
-      if foul.in?(text) && !whitelist.include?(foul)
-        return true
-      end
+      return true if foul.in?(text) && !whitelist.include?(foul)
     end
 
     false

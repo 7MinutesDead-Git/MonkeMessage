@@ -1,5 +1,6 @@
-# Personal Notes:
 # frozen_string_literal: true
+
+# Personal Notes:
 # Adding methods here means rails will expect matching erb files in views/articles.
 # @variable is just a parameter/instance variable of the class.
 # same as marking something self.variable in Python.
@@ -24,11 +25,12 @@
 #     # redirect_to(@new_article)
 
 # ---------------------------------------------------
-# Controller for our Article actions.
+# Controller for Article (messages) actions.
 class ArticlesController < ApplicationController
-  before_action(:require_user, except: [:show, :index])
+  # https://github.com/rubocop/ruby-style-guide#i
+  before_action(:require_user, except: %i[show index])
   before_action(:set_max_description_length, only: [:index])
-  before_action(:require_same_article_user, only: [:edit, :update, :destroy])
+  before_action(:require_same_article_user, only: %i[edit update destroy])
 
   # ----------------
   # Returns matching Article with the requested :id.
@@ -82,7 +84,6 @@ class ArticlesController < ApplicationController
       flash[:alert] = 'Article did not save!'
       render('new')
     end
-
   end
 
   # ----------------
@@ -95,6 +96,7 @@ class ArticlesController < ApplicationController
 
   # ----------------
   private
+
   # ----------------
   # Personal Notes: Strong Parameters!
   # https://api.rubyonrails.org/classes/ActionController/StrongParameters.html
@@ -111,26 +113,22 @@ class ArticlesController < ApplicationController
   # Returns nil if the article does not exist.
   # Redirects to articles index when RecordNotFound.
   def find_article_by_id
-    begin
-      Article.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      flash[:alert] = "That message doesn't exist; At least not anymore."
-      redirect_to articles_path
-      return nil
-    end
-
+    Article.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "That message doesn't exist; At least not anymore."
+    redirect_to articles_path
+    nil
   end
 
   def require_same_article_user
     @article = find_article_by_id
-    if @article and current_user != @article.user
-      flash[:alert] = "This isn't your message to edit! Are you logged into the right account?"
-      redirect_to @article
-    end
+    return unless @article && current_user != @article.user
+
+    flash[:alert] = "This isn't your message to edit! Are you logged into the right account?"
+    redirect_to @article
   end
 
   def set_max_description_length
     @max_description_length = 100
   end
-
 end
