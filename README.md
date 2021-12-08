@@ -1,5 +1,5 @@
 # Monke Message!
-This is a Rails app for messaging monkeys, colloquially referred to as Monke. You will send them messages, and those monkeys will message you back. The magic of how that happens is a closely guarded secret (a work in progress haha). In the interim, I'm establishing basic scaffolding and functionality for messaging.
+This is a Rails app for messaging monkeys, colloquially referred to as Monke. Send them messages and those monkeys will message you back. The magic of how that happens is a closely guarded secret (a work in progress). In the interim, scaffolding and functionality to suppor this is being built.
 
 ![image](https://user-images.githubusercontent.com/50963144/136717555-e35ff333-b79f-48ca-9364-2a6d4f6c5154.png)
   
