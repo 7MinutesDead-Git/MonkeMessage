@@ -41,9 +41,13 @@ class ArticlesController < ApplicationController
   # ----------------
   # Show articles index (overview of articles).
   def index
-    # Paginate all articles for performance and infinite scrolling.
     set_max_pagy_items
+    # Paginate all articles for performance and infinite scrolling.
     @pagy, @articles = pagy(Article.all.order('created_at DESC'), items: 10)
+  rescue Pagy::OverflowError
+    # If the user tries to directly access a pagination index that doesn't exist anymore
+    # via URL or old link.
+    redirect_to articles_path
   end
 
   # ----------------
