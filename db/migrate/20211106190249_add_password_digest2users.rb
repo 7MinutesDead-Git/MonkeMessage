@@ -1,3 +1,4 @@
+# Database migration schema for adding password digest to users table.
 class AddPasswordDigest2users < ActiveRecord::Migration[6.1]
   def change
     # Adding secure password to User table.
