@@ -31,6 +31,8 @@ class ArticlesController < ApplicationController
   before_action(:require_user, except: %i[show index])
   before_action(:set_max_description_length, only: [:index])
   before_action(:require_same_article_user, only: %i[edit update destroy])
+  # Able to quickly return to index if editing/deleting articles.
+  before_action(:store_return_to_url, only: %i[index])
 
   # ----------------
   # Returns matching Article with the requested :id.
@@ -68,7 +70,7 @@ class ArticlesController < ApplicationController
 
     if @article.update(permitted_params)
       flash[:notice] = 'Article updated.'
-      redirect_to(@article)
+      redirect_to(session[:return_to])
     else
       flash[:alert] = 'Edit did not save!'
       render('edit')
@@ -95,7 +97,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = find_article_by_id
     @article.destroy
-    redirect_to(articles_path)
+    redirect_to(session[:return_to])
   end
 
   # ----------------
@@ -126,7 +128,8 @@ class ArticlesController < ApplicationController
 
   def require_same_article_user
     @article = find_article_by_id
-    return unless @article && current_user != @article.user
+    # Allows article edits from either article's user or an admin, given the article exists.
+    return unless @article && (!current_user.admin? && current_user != @article.user)
 
     flash[:alert] = "This isn't your message to edit! Are you logged into the right account?"
     redirect_to @article

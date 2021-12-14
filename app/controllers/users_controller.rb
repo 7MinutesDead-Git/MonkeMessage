@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   before_action(:require_user, only: %i[edit update destroy])
   before_action(:require_same_user, only: %i[edit update destroy])
   before_action(:set_max_pagy_items, only: %i[show index])
+  # Allow us to return to the last working page.
+  #   Example, hitting the delete button on a user's profile page (show) will
+  #   keep the user on the profile page to make subsequent deletes are edits easier.
+  before_action(:store_return_to_url, only: %i[index show])
 
   # ------------------------ ------------------------
   def index
@@ -60,9 +64,14 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    session[:user_id] = nil
     flash[:danger] = 'Account has been deleted.'
-    redirect_to root_path
+
+    if current_user.admin?
+      redirect_to users_path
+    else
+      session[:user_id] = nil
+      redirect_to root_path
+    end
   end
 
   # ------------------------ ------------------------
@@ -86,7 +95,7 @@ class UsersController < ApplicationController
 
   # ------------------------
   def require_same_user
-    return unless current_user != @user
+    return unless !current_user.admin? && current_user != @user
 
     flash[:alert] = "This isn't your profile to edit, Monke."
     redirect_to @user
