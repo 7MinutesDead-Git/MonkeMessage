@@ -97,7 +97,7 @@ class UsersController < ApplicationController
   def require_same_user
     return unless !current_user.admin? && current_user != @user
 
-    flash[:alert] = "This isn't your profile to edit, Monke."
+    flash[:danger] = "This isn't your profile to edit, Monke."
     redirect_to @user
   end
 end

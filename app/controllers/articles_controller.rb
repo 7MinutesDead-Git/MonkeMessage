@@ -131,7 +131,7 @@ class ArticlesController < ApplicationController
     # Allows article edits from either article's user or an admin, given the article exists.
     return unless @article && (!current_user.admin? && current_user != @article.user)
 
-    flash[:alert] = "This isn't your message to edit! Are you logged into the right account?"
+    flash[:danger] = "This isn't your message to edit! Are you logged into the right account?"
     redirect_to @article
   end
 
