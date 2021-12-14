@@ -3,7 +3,7 @@
 # Users who can login, send and receive messages, etc.
 class User < ApplicationRecord
   # Each user can create many articles/messages.
-  has_many(:articles)
+  has_many(:articles, dependent: :destroy)
 
   # Validation: Present, unique, valid length.
   validates(:username,

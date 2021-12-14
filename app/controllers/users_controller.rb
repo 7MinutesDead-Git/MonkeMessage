@@ -4,9 +4,9 @@
 # with :username, :email and :password attributes.
 class UsersController < ApplicationController
   # https://github.com/rubocop/ruby-style-guide#i
-  before_action(:set_user, only: %i[update edit show])
-  before_action(:require_user, only: %i[edit update])
-  before_action(:require_same_user, only: %i[edit update])
+  before_action(:set_user, only: %i[update edit show destroy])
+  before_action(:require_user, only: %i[edit update destroy])
+  before_action(:require_same_user, only: %i[edit update destroy])
   before_action(:set_max_pagy_items, only: %i[show index])
 
   # ------------------------ ------------------------
@@ -58,6 +58,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    flash[:danger] = 'Account has been deleted.'
+    redirect_to root_path
+  end
+
   # ------------------------ ------------------------
   private
 
@@ -72,6 +79,9 @@ class UsersController < ApplicationController
   def set_user
     # Locates user by :id from Users table.
     @user = User.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "That user doesn't exist."
+    redirect_to root_path
   end
 
   # ------------------------

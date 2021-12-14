@@ -61,13 +61,23 @@
             <% else %>
               <%= user.submit("Save Changes", class: "btn btn-success") %>
               <%= link_to('Cancel', @user, method: :get, class: "btn btn-outline-secondary") %>
+              <div class="col-12 text-end">
+                <%= link_to('Delete Account',
+                            @user,
+                            method: :delete,
+                            data: { confirm: "This will delete your account! Are you sure?"},
+                            class: "btn btn-outline-danger")
+                %>
+              </div>
             <% end %>
           </div>
         </div>
       <% end %>
 
       <div class="col-12 text-end">
-        <%= link_to("[ Already have an account? ]", login_path, class: "btn-outline-secondary") %>
+        <% if @user.new_record? %>
+          <%= link_to("[ Already have an account? ]", login_path, class: "btn-outline-secondary") %>
+        <% end %>
       </div>
     </div>
   </div>
