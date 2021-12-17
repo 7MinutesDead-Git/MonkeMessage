@@ -9,8 +9,8 @@ class MonkeyTypesControllerTest < ActionDispatch::IntegrationTest
   # ----------------------------------------
   test 'should get index' do
     get monkey_types_url
-  end
     assert_response :success
+  end
 
   # ----------------------------------------
   test 'should get new' do
@@ -18,14 +18,14 @@ class MonkeyTypesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # # ----------------------------------------
-  # test 'should create monkey_type' do
-  #   assert_difference('MonkeyType.count') do
-  #     post monkey_types_url, params: { monkey_type: {  } }
-  #   end
-  #
-  #   assert_redirected_to monkey_type_url(MonkeyType.last)
-  # end
+  # ----------------------------------------
+  test 'should create monkey_type' do
+    assert_difference('MonkeyType.count') do
+      post monkey_types_url, params: { monkey_type: {  } }
+    end
+
+    assert_redirected_to monkey_type_url(MonkeyType.last)
+  end
 
   # ----------------------------------------
   test 'should show monkey_type' do
