@@ -18,8 +18,8 @@ class UsersController < ApplicationController
     # Paginate all users for performance and infinite scrolling.
     @pagy, @users = pagy(User.all, items: @max_pagy_items)
   rescue Pagy::OverflowError
-    # If the user tries to directly access a pagination index that doesn't exist anymore
-    # via URL or old link.
+    # If the user tries to directly access a pagination index that
+    # doesn't exist anymore via URL or old link.
     redirect_to users_path
   end
 
