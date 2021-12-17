@@ -31,6 +31,9 @@ gem 'pagy', '~> 5.2.2'
 
 # Reduces boot times through caching; required in config/boot.rb.
 gem 'bootsnap', '>= 1.4.4', require: false
+# This is a dependency of bootsnap, but is not loaded by default.
+# Related to issue: https://github.com/rails/rails/issues/41502
+gem 'rexml', '~> 3.2.5'
 
 gem 'bootstrap-sass'
 
