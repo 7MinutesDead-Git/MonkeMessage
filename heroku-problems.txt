@@ -1,0 +1,6 @@
+Heroku build problems and solutions:
+
+--------- "webpack not found" error
+    heroku run bundle exec rake app:update:bin
+    heroku buildpacks:add --index 1 heroku/nodejs
+    git push heroku master
