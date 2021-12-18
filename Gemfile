@@ -4,16 +4,21 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 7.0'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
+gem 'sass-rails', require: false
+gem 'sassc-rails'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 
 # https://github.com/hotwired/turbo-rails
 gem 'turbo-rails'
+
+# https://getbootstrap.com/docs/5.1/getting-started/download/#rubygems
+gem 'bootstrap'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
@@ -34,8 +39,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # This is a dependency of bootsnap, but is not loaded by default.
 # Related to issue: https://github.com/rails/rails/issues/41502
 gem 'rexml', '~> 3.2.5'
-
-gem 'bootstrap-sass'
 
 # Required by Javascript if using Rails 5.1 or higher.
 gem 'jquery-rails'
