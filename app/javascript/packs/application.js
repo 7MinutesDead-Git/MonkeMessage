@@ -10,9 +10,10 @@
 import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "bootstrap"
 import "animejs"
+import "bootstrap"
+import "../../assets/stylesheets/application.css.scss"
+import "./card_reveal"
 
 Rails.start()
 ActiveStorage.start()
-
