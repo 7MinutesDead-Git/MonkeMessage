@@ -230,6 +230,7 @@ DEPENDENCIES
   rails (~> 7.0)
   rexml (~> 3.2.5)
   sass-rails
+  sassc
   sassc-rails
   selenium-webdriver
   turbo-rails
