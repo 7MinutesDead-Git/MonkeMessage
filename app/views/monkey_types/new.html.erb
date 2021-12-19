@@ -1,1 +1,71 @@
+<%#  https://guides.rubyonrails.org/form_helpers.html %>
 
+<div id="page-content">
+  <h1 class="text-center">Add a new Monke to the database.</h1>
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <%# -------------------------------------------------------------------------------- %>
+        <%# Render errors form partial that checks for error messages. %>
+        <%= render('shared/errors', item: @monkey_type) %>
+
+        <%# -------------------------------------------------------------------------------- %>
+        <%# Setting local to true means using standard http post instead of ajax. %>
+        <%= form_with(
+              model: @monkey_type,
+              class: "shadow mb-1 p-3 bg-transparent rounded",
+              local: true
+            ) do |monkey| %>
+
+          <%# Monke common name. --------------------- %>
+          <div class="form-group row shadow mb-3 rounded">
+            <%= monkey.label :name, class: "col-2 col-form-label" %>
+            <div class="col-12">
+              <%= monkey.text_field(
+                    :name,
+                    class: "form-control bg-dark text-light",
+                    placeholder: "Colombian White-Faced Capuchin") %>
+            </div>
+          </div>
+
+          <%# Monke scientific name. --------------------- %>
+          <div class="form-group row shadow mb-3 rounded">
+            <%= monkey.label :scientific_name, class: "col-2 col-form-label" %>
+            <div class="col-12">
+              <%= monkey.text_field(
+                    :scientific_name,
+                    class: "form-control bg-dark text-light",
+                    placeholder: "Cebus capucinus") %>
+            </div>
+          </div>
+
+          <%# Monke colloquial name. --------------------- %>
+          <div class="form-group row shadow mb-3 rounded">
+            <%= monkey.label :colloquial_name, class: "col-2 col-form-label" %>
+            <div class="col-12">
+              <%= monkey.text_field(
+                    :colloquial_name,
+                    class: "form-control bg-dark text-light",
+                    placeholder: "Capuccino") %>
+            </div>
+          </div>
+
+          <%# Buttons. --------------------- %>
+          <div class="form-group row">
+            <div>
+              <%= monkey.submit("Submit New Monke", class: "btn btn-success") %>
+              <%= link_to(
+                    'Cancel',
+                    session[:return_to],
+                    method: :get,
+                    class: "btn btn-outline-secondary") %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>

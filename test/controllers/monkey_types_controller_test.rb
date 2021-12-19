@@ -19,13 +19,16 @@ class MonkeyTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   # ----------------------------------------
-  # test 'should create monkey_type' do
-  #   assert_difference('MonkeyType.count') do
-  #     post monkey_types_url, params: { monkey_type: {  } }
-  #   end
-  #
-  #   assert_redirected_to monkey_type_url(MonkeyType.last)
-  # end
+  test 'should create monkey_type' do
+    assert_difference('MonkeyType.count', 1) do
+      post(monkey_types_url,
+           params: {
+             monkey_type: { name: 'central american squirrel'  }
+           }
+      )
+    end
+    assert_redirected_to monkey_type_url(MonkeyType.last)
+  end
 
   # ----------------------------------------
   test 'should show monkey_type' do
