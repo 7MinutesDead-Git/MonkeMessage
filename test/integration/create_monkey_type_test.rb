@@ -16,7 +16,7 @@ class CreateMonkeyTypeTest < ActionDispatch::IntegrationTest
     # Test for redirection to new monkey page after.
     follow_redirect!
     assert_response :success
-    # Monkey name should show up somewhere in the html body.
-    assert_match "central american squirrel", response.body
+    # Monkey scientific name should show up somewhere in the html body.
+    assert_match "Saimiri oerstedii", response.body
   end
 end
