@@ -27,12 +27,7 @@ class MonkeyTypesControllerTest < ActionDispatch::IntegrationTest
   test 'should create monkey_type' do
     assert_difference('MonkeyType.count', 1) do
       post(monkey_types_url,
-           params: { monkey_type: {
-             name: 'central american squirrel',
-             scientific_name: 'Saimiri oerstedii',
-             colloquial_name: 'Squirrel Monke',
-             age: 5,
-             friendliness: 10 } } )
+           params: MonkeyTypeTest::SQUIRREL_TYPE_PARAMS )
     end
     assert_redirected_to monkey_type_url(MonkeyType.last)
   end

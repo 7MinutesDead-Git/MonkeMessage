@@ -4,9 +4,23 @@ require 'test_helper'
 
 class MonkeyTypeTest < ActiveSupport::TestCase
   # ----------------------------------------
+  # For re-use in testing where applicable.
+  SQUIRREL_TYPE_PARAMS = { monkey_type: {
+    name: 'central american squirrel monkey',
+    scientific_name: 'Saimiri oerstedii',
+    colloquial_name: 'Squirrel Monke',
+    age: 5,
+    friendliness: 10 } }
+
+  # ----------------------------------------
   # Setup is run before each test.
   def setup
-    @monkey_type = MonkeyType.new(name: 'emperor tamarin', age: 7, friendliness: 9)
+    @monkey_type = MonkeyType.new(
+      name: 'emperor tamarin',
+      scientific_name: 'saguinus imperator',
+      colloquial_name: 'new groove',
+      age: 7,
+      friendliness: 9 )
   end
   # ----------------------------------------
   test 'monkey type should be valid' do
