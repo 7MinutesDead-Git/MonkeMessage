@@ -7,10 +7,29 @@ class MonkeyType < ApplicationRecord
   FRIENDLY_MIN = 0
   FRIENDLY_MAX = 10
 
-  validates :name, presence: true, length: { minimum: NAME_MIN_LENGTH, maximum: NAME_MAX_LENGTH }
-  validates :scientific_name, length: { minimum: NAME_MIN_LENGTH, maximum: NAME_MAX_LENGTH }
-  validates :colloquial_name, length: { minimum: NAME_MIN_LENGTH, maximum: NAME_MAX_LENGTH }
-  validates :age, numericality: true, inclusion: { in: AGE_MIN..AGE_MAX }
-  validates :friendliness, inclusion: { in: FRIENDLY_MIN..FRIENDLY_MAX }
+  validates(
+    :name,
+    presence: true,
+    length: { minimum: NAME_MIN_LENGTH, maximum: NAME_MAX_LENGTH } )
+
+  validates(
+    :scientific_name,
+    presence: true,
+    length: { minimum: NAME_MIN_LENGTH, maximum: NAME_MAX_LENGTH } )
+
+  validates(
+    :colloquial_name,
+    presence: true,
+    length: { minimum: NAME_MIN_LENGTH, maximum: NAME_MAX_LENGTH } )
+
+  validates(
+    :age,
+    numericality: true,
+    inclusion: { in: AGE_MIN..AGE_MAX } )
+
+  validates(
+    :friendliness,
+    inclusion: { in: FRIENDLY_MIN..FRIENDLY_MAX } )
+
   validates_uniqueness_of :name
 end
