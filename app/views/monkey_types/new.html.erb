@@ -6,7 +6,7 @@
   <div class="container">
 
     <div class="row justify-content-center">
-      <div class="col-10">
+      <div class="col-5">
         <%# -------------------------------------------------------------------------------- %>
         <%# Render errors form partial that checks for error messages. %>
         <%= render('shared/errors', item: @monkey_type) %>
@@ -21,7 +21,7 @@
 
           <%# Monke common name. --------------------- %>
           <div class="form-group row shadow mb-3 rounded">
-            <%= monkey.label :name, class: "col-2 col-form-label" %>
+            <%= monkey.label :name, class: "col-5 col-form-label" %>
             <div class="col-12">
               <%= monkey.text_field(
                     :name,
@@ -32,7 +32,7 @@
 
           <%# Monke scientific name. --------------------- %>
           <div class="form-group row shadow mb-3 rounded">
-            <%= monkey.label :scientific_name, class: "col-2 col-form-label" %>
+            <%= monkey.label :scientific_name, class: "col-5 col-form-label" %>
             <div class="col-12">
               <%= monkey.text_field(
                     :scientific_name,
@@ -43,12 +43,38 @@
 
           <%# Monke colloquial name. --------------------- %>
           <div class="form-group row shadow mb-3 rounded">
-            <%= monkey.label :colloquial_name, class: "col-2 col-form-label" %>
+            <%= monkey.label :colloquial_name, class: "col-5 col-form-label" %>
             <div class="col-12">
               <%= monkey.text_field(
                     :colloquial_name,
                     class: "form-control bg-dark text-light",
                     placeholder: "Capuccino") %>
+            </div>
+          </div>
+
+          <%# Monke age. --------------------- %>
+          <div class="form-group row shadow mb-3 rounded">
+            <%= monkey.label :age, class: "col-2 col-form-label" %>
+            <div class="col-12">
+              <%= monkey.number_field(
+                    :age,
+                    in: MonkeyType::AGE_MIN..MonkeyType::AGE_MAX,
+                    step: 1,
+                    class: "form-control bg-dark text-light",
+                    placeholder: "(0 - 10000) Young or Timeless.") %>
+            </div>
+          </div>
+
+          <%# Monke friendliness. --------------------- %>
+          <div class="form-group row shadow mb-3 rounded">
+            <%= monkey.label :friendliness, class: "col-2 col-form-label" %>
+            <div class="col-12">
+              <%= monkey.number_field(
+                    :friendliness,
+                    in: MonkeyType::FRIENDLY_MIN..MonkeyType::FRIENDLY_MAX,
+                    step: 1,
+                    class: "form-control bg-dark text-light",
+                    placeholder: "(0 - 10) I hope they don't bite.") %>
             </div>
           </div>
 
@@ -59,7 +85,6 @@
               <%= link_to(
                     'Cancel',
                     session[:return_to],
-                    method: :get,
                     class: "btn btn-outline-secondary") %>
             </div>
           </div>
