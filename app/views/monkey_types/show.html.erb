@@ -1,1 +1,22 @@
+<%#  https://guides.rubyonrails.org/form_helpers.html %>
+<%= javascript_pack_tag 'card_reveal' %>
 
+<div id="page-content">
+  <h1 class="text-center" id="header-title-anim">
+    <span class="user-profile-header-username font-monospace">
+      <%= @monkey_type.scientific_name %>
+    </span>
+  </h1>
+
+  <div class="text-center mt-4">
+    <% if logged_in? && current_user.admin? %>
+      <%= link_to("Fix Monke", edit_monkey_type_path(@monkey_type), class: "btn btn-outline-warning") %>
+      <%= link_to("Delete Monke :(",
+                  @monkey_type,
+                  method: :delete,
+                  data: { confirm: "Are you sure you wish to delete #{@monkey_type.colloquial_name}?"},
+                  class: "btn btn-outline-danger") %>
+    <% end %>
+  </div>
+
+</div>

@@ -6,6 +6,7 @@ class MonkeyTypesController < ApplicationController
 
   # ----------------------
   def show
+    @monkey_type = find_monkey_by_id
   end
 
   # ----------------------
@@ -34,5 +35,17 @@ class MonkeyTypesController < ApplicationController
       :colloquial_name,
       :age,
       :friendliness)
+  end
+
+  # ----------------
+  # Find monkey type with given :id from RESTful request.
+  # Returns nil if the monkey does not exist.
+  # Redirects to last page when RecordNotFound.
+  def find_monkey_by_id
+    MonkeyType.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "That Monke doesn't exist! Unless.."
+    redirect_to session[:return_to]
+    nil
   end
 end
