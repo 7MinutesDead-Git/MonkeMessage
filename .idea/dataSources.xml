@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Rails alpha-blog: development" uuid="2f66fa42-fb98-418d-b907-87bf5ab6e8ab">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:M:\GitRepositories\7MDWebApps\alpha-blog\db\development.sqlite3</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="Rails MonkeMessage: production" uuid="9e8c5050-dbe0-41a4-b7ab-45de0b16b348">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>

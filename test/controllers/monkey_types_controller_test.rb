@@ -3,7 +3,12 @@ require 'test_helper'
 class MonkeyTypesControllerTest < ActionDispatch::IntegrationTest
   # ----------------------------------------
   setup do
-    @monkey_type = MonkeyType.create(name: 'golden snub-nosed', age: 2, friendliness: 5)
+    @monkey_type = MonkeyType.create(
+      name: 'golden snub-nosed',
+      scientific_name: 'Rhinopithecus roxellana',
+      colloquial_name: 'golden boi',
+      age: 2,
+      friendliness: 5 )
   end
 
   # ----------------------------------------
@@ -23,9 +28,12 @@ class MonkeyTypesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('MonkeyType.count', 1) do
       post(monkey_types_url,
            params: {
-             monkey_type: { name: 'central american squirrel'  }
-           }
-      )
+             monkey_type: {
+               name: 'central american squirrel',
+               scientific_name: 'Saimiri oerstedii',
+               colloquial_name: 'Squirrel Monke',
+               age: 5,
+               friendliness: 10 } } )
     end
     assert_redirected_to monkey_type_url(MonkeyType.last)
   end
