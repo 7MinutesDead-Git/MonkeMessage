@@ -9,7 +9,7 @@ class CreateMonkeyTypeTest < ActionDispatch::IntegrationTest
 
     # Test for successfully creating a new monkey type.
     assert_difference 'MonkeyType.count', 1 do
-      post monkey_types_path, params: MonkeyTypeTest::SQUIRREL_TYPE_PARAMS
+      post monkey_types_path, params: { monkey_type: MonkeyTypeTest::MONKEY_SQUIRREL_SETUP_PARAMS }
       assert_response :redirect
     end
 
@@ -18,7 +18,7 @@ class CreateMonkeyTypeTest < ActionDispatch::IntegrationTest
     assert_response :success
     # Monkey scientific name should show up somewhere in the html body.
     assert_match(
-      MonkeyTypeTest::SQUIRREL_TYPE_PARAMS.dig(:monkey_type, :scientific_name),
+      MonkeyTypeTest::MONKEY_SQUIRREL_SETUP_PARAMS.dig(:scientific_name),
       response.body )
   end
   # ------------------------------------------------------------
