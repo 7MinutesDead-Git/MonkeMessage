@@ -3,6 +3,15 @@
     <div class="container">
       <div class="card monkey-type-card">
 
+        <% if logged_in? && current_user.admin? %>
+          <%= link_to("Edit", edit_monkey_type_path(monkey), class: "btn btn-dark") %>
+          <%= link_to("Delete",
+                      monkey_type_path(monkey),
+                      class: "btn btn-danger",
+                      method: :delete,
+                      data: {confirm: "Permanently delete #{monkey.name}?"})%>
+        <% end %>
+
         <%# Monkey Name. %>
         <div class="card-header font-monospace">
           <% if monkey.name %>
@@ -30,15 +39,6 @@
               <% store_return_to_url %>
               <%= link_to("Full Description", monkey_type_path(monkey), class: "btn btn-primary") %>
             <% end %>
-
-            <% if logged_in? && current_user.admin? %>
-              <%= link_to("Edit", edit_monkey_type_path(monkey), class: "btn btn-dark") %>
-              <%= link_to("Delete",
-                          monkey_type_path(monkey),
-                          class: "btn btn-danger",
-                          method: :delete,
-                          data: {confirm: "Permanently delete #{monkey.name}?"})%>
-            <% end %>
           </div>
         </div>
 
@@ -54,6 +54,17 @@
         </div>
 
       </div>
+    </div>
+  </div>
+<% end %>
+
+<% if logged_in? && current_user.admin? %>
+  <div class="col-12 mt-5">
+    <div class="container">
+      <%= link_to(
+            "",
+            new_monkey_type_path,
+            class: "card monkey-type-card new-monkey-gradient-overlay") %>
     </div>
   </div>
 <% end %>

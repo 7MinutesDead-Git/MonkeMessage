@@ -162,6 +162,19 @@ $corner_radius: 5px;
   height: 30rem;
 }
 
+.new-monkey-gradient-overlay {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom right, green, yellow);
+    opacity: 0.5;
+  }
+}
+
 #create_new_message_btn {
   position: fixed;
   top: 75px;

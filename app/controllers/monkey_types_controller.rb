@@ -1,4 +1,6 @@
 class MonkeyTypesController < ApplicationController
+  before_action :require_admin, except: [:index, :show]
+  before_action :store_return_to_url, only: [:index]
   # ----------------------
   def new
     @monkey_type = MonkeyType.new
@@ -51,5 +53,14 @@ class MonkeyTypesController < ApplicationController
     flash[:alert] = "That Monke doesn't exist! Unless.."
     redirect_to session[:return_to]
     nil
+  end
+
+  # ----------------------
+  def require_admin
+    unless logged_in? && current_user.admin?
+      flash[:alert] = "Only Monke Moderators can add new Monkes!"
+      redirect_to monkey_types_path
+    end
+
   end
 end
