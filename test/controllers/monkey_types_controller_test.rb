@@ -3,12 +3,8 @@ require 'test_helper'
 class MonkeyTypesControllerTest < ActionDispatch::IntegrationTest
   # ----------------------------------------
   setup do
-    @monkey_type = MonkeyType.create(
-      name: 'golden snub-nosed',
-      scientific_name: 'Rhinopithecus roxellana',
-      colloquial_name: 'golden boi',
-      age: 2,
-      friendliness: 5 )
+    @monkey_type = MonkeyType.create(monkey_golden_setup_params)
+    @admin_user = create_test_admin_user
   end
 
   # ----------------------------------------
@@ -19,15 +15,17 @@ class MonkeyTypesControllerTest < ActionDispatch::IntegrationTest
 
   # ----------------------------------------
   test 'should get new' do
+    sign_in_as(@admin_user)
     get new_monkey_type_url
     assert_response :success
   end
 
   # ----------------------------------------
   test 'should create monkey_type' do
+    sign_in_as(@admin_user)
     assert_difference('MonkeyType.count', 1) do
       post(monkey_types_url,
-           params: { monkey_type: MonkeyTypeTest::MONKEY_SQUIRREL_SETUP_PARAMS } )
+           params: { monkey_type: monkey_squirrel_setup_params } )
     end
     assert_redirected_to monkey_type_url(MonkeyType.last)
   end
@@ -36,6 +34,15 @@ class MonkeyTypesControllerTest < ActionDispatch::IntegrationTest
   test 'should show monkey_type' do
     get monkey_type_url(@monkey_type)
     assert_response :success
+  end
+
+  # ----------------------------------------
+  test 'should not create monkey type if not admin' do
+    assert_no_difference('MonkeyType.count') do
+      post(monkey_types_url,
+           params: { monkey_type: monkey_squirrel_setup_params } )
+    end
+    assert_redirected_to monkey_types_url
   end
 
   # # ----------------------------------------

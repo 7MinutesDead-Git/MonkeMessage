@@ -4,30 +4,14 @@ require 'test_helper'
 
 class MonkeyTypeTest < ActiveSupport::TestCase
   # ----------------------------------------
-  # For re-use in testing where applicable.
-  MONKEY_SQUIRREL_SETUP_PARAMS = {
-    name: 'central american squirrel monkey',
-    scientific_name: 'Saimiri oerstedii',
-    colloquial_name: 'Squirrel Monke',
-    age: 5,
-    friendliness: 10 }
-
-  MONKEY_TAMARIN_SETUP_PARAMS = {
-    name: 'emperor tamarin',
-    scientific_name: 'saguinus imperator',
-    colloquial_name: 'new groove',
-    age: 7,
-    friendliness: 9 }
-
-  # ----------------------------------------
   # Setup is run before each test.
   def setup
-    @monkey_type = MonkeyType.new(MONKEY_TAMARIN_SETUP_PARAMS)
+    @monkey_type = MonkeyType.new(monkey_tamarin_setup_params)
   end
 
   # ----------------------------------------
   test 'monkey type should be valid' do
-    assert(@monkey_type.valid?)
+    assert @monkey_type.valid?
   end
 
   # ----------------------------------------
@@ -51,7 +35,7 @@ class MonkeyTypeTest < ActiveSupport::TestCase
   # ----------------------------------------
   test 'monkey type name should be unique' do
     @monkey_type.save
-    @monkey_type_two = MonkeyType.new(name: MONKEY_TAMARIN_SETUP_PARAMS[:name])
+    @monkey_type_two = MonkeyType.new(name: monkey_tamarin_setup_params[:name])
     assert_not @monkey_type_two.valid?
   end
 

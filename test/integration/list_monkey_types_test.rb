@@ -3,8 +3,8 @@ require "test_helper"
 class ListMonkeyTypesTest < ActionDispatch::IntegrationTest
   # ----------------------------------------
   setup do
-    @squirrel_monkey = MonkeyType.create(MonkeyTypeTest::MONKEY_SQUIRREL_SETUP_PARAMS)
-    @tamarin_monkey = MonkeyType.create(MonkeyTypeTest::MONKEY_TAMARIN_SETUP_PARAMS)
+    @squirrel_monkey = MonkeyType.create(monkey_squirrel_setup_params)
+    @tamarin_monkey = MonkeyType.create(monkey_tamarin_setup_params)
   end
 
   # ----------------------------------------
