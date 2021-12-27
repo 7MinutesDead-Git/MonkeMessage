@@ -1,0 +1,59 @@
+<% @monkey_type.each do |monkey| %>
+  <div class="col-12 mt-5">
+    <div class="container">
+      <div class="card monkey-type-card">
+
+        <%# Monkey Name. %>
+        <div class="card-header font-monospace">
+          <% if monkey.name %>
+            <%= link_to(monkey.name, monkey_type_path(monkey), class: "link-user") %>
+          <% end %>
+        </div>
+
+        <%# Main card body. ----------------------------------------------------------- %>
+        <div class="bg-gradient card-body shadow">
+          <p class="card-title">
+            Scientific: <%= monkey.scientific_name %>
+          </p>
+
+          <p class="card-text">
+            Colloquial: <%= monkey.colloquial_name %>
+          </p>
+
+          <p class="card-text">
+            <%= simple_format(truncate(monkey.description, length: 200)) %>
+          </p>
+
+          <%# Buttons. %>
+          <div class="font-monospace">
+            <% if monkey.description && monkey.description.length > 200 %>
+              <% store_return_to_url %>
+              <%= link_to("Full Description", monkey_type_path(monkey), class: "btn btn-primary") %>
+            <% end %>
+
+            <% if logged_in? && current_user.admin? %>
+              <%= link_to("Edit", edit_monkey_type_path(monkey), class: "btn btn-dark") %>
+              <%= link_to("Delete",
+                          monkey_type_path(monkey),
+                          class: "btn btn-danger",
+                          method: :delete,
+                          data: {confirm: "Permanently delete #{monkey.name}?"})%>
+            <% end %>
+          </div>
+        </div>
+
+        <%# Timestamp footer. ---------------------------------------------------------- %>
+        <div class="card-footer text-muted font-monospace">
+          <small>
+            Born <%= time_ago_in_words(monkey.created_at) %> ago.
+
+            <% if monkey.updated_at != monkey.created_at %>
+              Edited <%=time_ago_in_words(monkey.updated_at) %> ago.
+            <% end %>
+          </small>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>

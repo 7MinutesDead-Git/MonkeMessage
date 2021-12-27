@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get('monke_gallery', to: 'pages#monke_gallery')
   get('monke_replies', to: 'pages#monke_replies')
   get('monke_info', to: 'pages#monke_info')
+  get('monkey_types', to: 'monkey_types#index')
 
   get('signup', to: 'users#new')
   # For handling user login sessions.

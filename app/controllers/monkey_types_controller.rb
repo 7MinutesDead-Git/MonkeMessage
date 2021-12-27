@@ -11,6 +11,10 @@ class MonkeyTypesController < ApplicationController
 
   # ----------------------
   def index
+    set_max_pagy_items
+    @pagy, @monkey_type = pagy(MonkeyType.all.order('name DESC'), items: 20)
+  rescue Pagy::OverflowError
+    redirect_to monkey_type_path
   end
 
   # ----------------------
