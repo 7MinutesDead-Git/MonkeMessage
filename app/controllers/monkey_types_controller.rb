@@ -37,7 +37,7 @@ class MonkeyTypesController < ApplicationController
       :friendliness)
   end
 
-  # ----------------
+  # ----------------------
   # Find monkey type with given :id from RESTful request.
   # Returns nil if the monkey does not exist.
   # Redirects to last page when RecordNotFound.

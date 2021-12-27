@@ -21,5 +21,22 @@ class CreateMonkeyTypeTest < ActionDispatch::IntegrationTest
       MonkeyTypeTest::MONKEY_SQUIRREL_SETUP_PARAMS.dig(:scientific_name),
       response.body )
   end
+
+
+  # ------------------------------------------------------------
+  test "get new monkey_type form and reject invalid submission" do
+    # Test for getting the form.
+    get "/monkey_types/new"
+    assert_response :success
+
+    # Test for successfully creating a new monkey type.
+    assert_no_difference 'MonkeyType.count' do
+      post monkey_types_path, params: { monkey_type: { name: "only name" } }
+    end
+
+    # Asserting match of text from _errors.html.erb shared partial.
+    assert_match"Oops", response.body
+    assert_select 'div.alert-warning'
+  end
   # ------------------------------------------------------------
 end

@@ -24,6 +24,7 @@ class MonkeyTypeTest < ActiveSupport::TestCase
   def setup
     @monkey_type = MonkeyType.new(MONKEY_TAMARIN_SETUP_PARAMS)
   end
+
   # ----------------------------------------
   test 'monkey type should be valid' do
     assert(@monkey_type.valid?)
