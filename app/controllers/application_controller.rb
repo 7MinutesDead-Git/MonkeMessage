@@ -3,10 +3,11 @@
 # Parent class for Articles, Pages, Users, Sessions, etc.
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+
+  before_action
   # Personal Notes: Declaring something as a helper method allows
   #   these methods to be served to views as well as controllers.
   helper_method(:current_user, :logged_in?, :set_max_pagy_items, :store_return_to_url)
-
   # -----------------
   def current_user
     # Assigns the database query to @current_user, unless it already exists. "Or" assignment.
